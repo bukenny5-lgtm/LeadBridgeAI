@@ -1,0 +1,39 @@
+**********************
+Windows PowerShell transcript start
+Start time: 20260829065027
+Username: CYBERSPACE\user
+RunAs User: CYBERSPACE\user
+Configuration Name:
+Machine: CYBERSPACE (Microsoft Windows NT 10.0.19045.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 14864
+PSVersion: 5.1.19041.7663
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.7663
+BuildVersion: 10.0.19041.7663
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\traces\coding-agent\phase-01-foundation-console.txt
+PS C:\Hackathons\LeadBridgeAI> codex
+codex : File C:\Users\user\AppData\Roaming\npm\codex.ps1 cannot be loaded because running scripts is disabled on this
+system. For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:1
++ codex
++ ~~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+codex : File C:\Users\user\AppData\Roaming\npm\codex.ps1 cannot be loaded because running scripts is disabled on this
+system. For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:1
++ codex
++ ~~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+PS C:\Hackathons\LeadBridgeAI> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20260829065725
+**********************
