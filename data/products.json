@@ -1,0 +1,190 @@
+{
+  "schema_version": "1.0.0",
+  "products": [
+    {
+      "product_id": "UG-PRD-101",
+      "sku": "KSS-WB-1500-BLU",
+      "name": "Blue 1.5L water bottle",
+      "category": "hydration",
+      "safe_description": "Reusable insulated bottle for everyday retail use.",
+      "listed_price_ugx": 18000,
+      "active": true,
+      "variants": [
+        {
+          "variant_id": "standard-blue-1.5l",
+          "colour": "blue",
+          "size": "1.5L",
+          "packaging": "standard",
+          "design": "plain"
+        }
+      ],
+      "synthetic_image_references": [
+        "synthetic://images/ug-prd-101/front.png",
+        "synthetic://images/ug-prd-101/side.png"
+      ],
+      "related_product_ids": ["UG-PRD-108"]
+    },
+    {
+      "product_id": "UG-PRD-102",
+      "sku": "KSS-SL-S2-SND",
+      "name": "Solar lantern S2",
+      "category": "lighting",
+      "safe_description": "Portable solar lantern for household and kiosk use.",
+      "listed_price_ugx": 45000,
+      "active": true,
+      "variants": [
+        {
+          "variant_id": "standard-s2",
+          "colour": "sand",
+          "size": "standard",
+          "packaging": "retail",
+          "design": "s2"
+        }
+      ],
+      "synthetic_image_references": [
+        "synthetic://images/ug-prd-102/front.png"
+      ],
+      "related_product_ids": ["UG-PRD-101", "UG-PRD-106"]
+    },
+    {
+      "product_id": "UG-PRD-103",
+      "sku": "KSS-BP-B300-NAV",
+      "name": "Navy B-300 backpack",
+      "category": "bags",
+      "safe_description": "Everyday backpack with synthetic demo imagery only.",
+      "listed_price_ugx": 58000,
+      "active": true,
+      "variants": [
+        {
+          "variant_id": "navy-b300",
+          "colour": "navy",
+          "size": "standard",
+          "packaging": "retail",
+          "design": "b300"
+        }
+      ],
+      "synthetic_image_references": [
+        "synthetic://images/ug-prd-103/front.png",
+        "synthetic://images/ug-prd-103/back.png"
+      ],
+      "related_product_ids": ["UG-PRD-105"]
+    },
+    {
+      "product_id": "UG-PRD-104",
+      "sku": "KSS-LB-4PK",
+      "name": "Reusable lunch box 4-pack",
+      "category": "food-storage",
+      "safe_description": "Reusable lunch containers for household stock handling.",
+      "listed_price_ugx": 32000,
+      "active": true,
+      "variants": [
+        {
+          "variant_id": "standard-4pack",
+          "colour": "green",
+          "size": "4-pack",
+          "packaging": "bundle",
+          "design": "stackable"
+        }
+      ],
+      "synthetic_image_references": [
+        "synthetic://images/ug-prd-104/front.png"
+      ],
+      "related_product_ids": []
+    },
+    {
+      "product_id": "UG-PRD-105",
+      "sku": "KSS-TN-PACK-CMP",
+      "name": "Printer toner pack",
+      "category": "office-supplies",
+      "safe_description": "Compatible toner bundle for synthetic evaluation only.",
+      "listed_price_ugx": 95000,
+      "active": true,
+      "variants": [
+        {
+          "variant_id": "compatible-standard",
+          "colour": "black",
+          "size": "standard",
+          "packaging": "bundle",
+          "design": "compatible"
+        }
+      ],
+      "synthetic_image_references": [
+        "synthetic://images/ug-prd-105/front.png"
+      ],
+      "related_product_ids": ["UG-PRD-107"]
+    },
+    {
+      "product_id": "UG-PRD-106",
+      "sku": "KSS-LW-STD",
+      "name": "LED work lamp",
+      "category": "lighting",
+      "safe_description": "Portable work lamp for the synthetic catalogue.",
+      "listed_price_ugx": 12000,
+      "active": true,
+      "variants": [
+        {
+          "variant_id": "standard-lamp",
+          "colour": "white",
+          "size": "standard",
+          "packaging": "retail",
+          "design": "portable"
+        }
+      ],
+      "synthetic_image_references": [
+        "synthetic://images/ug-prd-106/front.png"
+      ],
+      "related_product_ids": []
+    },
+    {
+      "product_id": "UG-PRD-107",
+      "sku": "KSS-NB-BUNDLE",
+      "name": "School notebook bundle",
+      "category": "stationery",
+      "safe_description": "Bulk notebook bundle for school supply scenarios.",
+      "listed_price_ugx": 260000,
+      "active": true,
+      "variants": [
+        {
+          "variant_id": "mixed-bundle",
+          "colour": "mixed",
+          "size": "bulk",
+          "packaging": "carton",
+          "design": "school"
+        }
+      ],
+      "synthetic_image_references": [
+        "synthetic://images/ug-prd-107/front.png"
+      ],
+      "related_product_ids": []
+    },
+    {
+      "product_id": "UG-PRD-108",
+      "sku": "KSS-FS-750",
+      "name": "Green 750ml flask",
+      "category": "hydration",
+      "safe_description": "Reusable flask with synthetic color variants.",
+      "listed_price_ugx": 20000,
+      "active": true,
+      "variants": [
+        {
+          "variant_id": "green-750ml",
+          "colour": "green",
+          "size": "750ml",
+          "packaging": "retail",
+          "design": "plain"
+        },
+        {
+          "variant_id": "blue-750ml",
+          "colour": "blue",
+          "size": "750ml",
+          "packaging": "retail",
+          "design": "plain"
+        }
+      ],
+      "synthetic_image_references": [
+        "synthetic://images/ug-prd-108/front.png"
+      ],
+      "related_product_ids": ["UG-PRD-101"]
+    }
+  ]
+}

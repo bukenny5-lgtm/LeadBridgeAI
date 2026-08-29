@@ -2,7 +2,7 @@
 
 ## Phase
 
-Phase 2 deterministic baseline hardening and evaluation engine, verified and frozen.
+Phase 3 verified-tool recovery and evaluation engine, verified and frozen.
 
 ## What exists now
 
@@ -18,6 +18,9 @@ Phase 2 deterministic baseline hardening and evaluation engine, verified and fro
 - Deterministic baseline scaffold
 - Evaluation loader, scorer, and report generation scaffold
 - Baseline reports in `evaluation/results/`
+- Verified tool layer backed by synthetic fixtures
+- Tool-assisted evaluation report in `evaluation/results/`
+- Sanitized runtime-agent trajectory set in `traces/runtime-agent/tool-assisted/`
 
 ## What does not exist yet
 
@@ -28,8 +31,8 @@ Phase 2 deterministic baseline hardening and evaluation engine, verified and fro
 
 ## Status summary
 
-The Phase 2 deterministic baseline and evaluation engine have been implemented, verified, and frozen as the authoritative baseline.
+The Phase 2 deterministic baseline remains the authoritative baseline at 20.00% on the 20-case synthetic set. Phase 3 added the verified tool layer, sanitized trajectories, and a tool-assisted evaluation pass that scored 60.00% on the same 20 cases.
 
-The authoritative frozen baseline result is 20.00% on the 20-case synthetic set after the precedence-and-suppression revision, with reports written to `evaluation/results/baseline.json` and `evaluation/results/baseline.md`.
+The authoritative frozen baseline result is still 20.00% on the 20-case synthetic set after the precedence-and-suppression revision, with reports written to `evaluation/results/baseline.json` and `evaluation/results/baseline.md`.
 
-The next milestone is the data and tool layer, not the web UI.
+The next milestone is model-driven agent orchestration, not the web UI.

@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "rules": [
+    {
+      "delivery_policy_id": "DEL-KLA-001",
+      "priority": 1,
+      "supported_zones": ["Kampala Central", "Kampala North", "Kampala East", "Kampala West", "Kampala South"],
+      "fee_rule_ugx": 5000,
+      "estimated_window": "same day or next day",
+      "pickup_available": true,
+      "approval_required": false,
+      "unsupported_zones": ["outside service area"]
+    },
+    {
+      "delivery_policy_id": "DEL-MUK-001",
+      "priority": 2,
+      "supported_zones": ["Mukono Town"],
+      "fee_rule_ugx": 6000,
+      "estimated_window": "next day",
+      "pickup_available": true,
+      "approval_required": false,
+      "unsupported_zones": []
+    },
+    {
+      "delivery_policy_id": "DEL-JIN-001",
+      "priority": 3,
+      "supported_zones": ["Jinja Town"],
+      "fee_rule_ugx": 7000,
+      "estimated_window": "next day or two days",
+      "pickup_available": false,
+      "approval_required": true,
+      "unsupported_zones": []
+    },
+    {
+      "delivery_policy_id": "DEL-ENT-001",
+      "priority": 4,
+      "supported_zones": ["Entebbe Town"],
+      "fee_rule_ugx": 6500,
+      "estimated_window": "next day",
+      "pickup_available": true,
+      "approval_required": false,
+      "unsupported_zones": []
+    },
+    {
+      "delivery_policy_id": "DEL-WAK-001",
+      "priority": 5,
+      "supported_zones": ["Wakiso Town"],
+      "fee_rule_ugx": 6000,
+      "estimated_window": "next day",
+      "pickup_available": true,
+      "approval_required": false,
+      "unsupported_zones": []
+    }
+  ]
+}

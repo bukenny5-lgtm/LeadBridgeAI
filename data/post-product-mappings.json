@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "mappings": [
+    {
+      "channel": "facebook",
+      "post_id": "fb-post-001",
+      "product_id": "UG-PRD-101"
+    },
+    {
+      "channel": "instagram",
+      "post_id": "ig-post-002",
+      "product_id": "UG-PRD-102"
+    },
+    {
+      "channel": "tiktok",
+      "post_id": "tt-post-003",
+      "product_id": "UG-PRD-103"
+    },
+    {
+      "channel": "email",
+      "post_id": "email-thread-004",
+      "product_id": "UG-PRD-102"
+    },
+    {
+      "channel": "facebook",
+      "post_id": "fb-post-005",
+      "product_id": "UG-PRD-101"
+    },
+    {
+      "channel": "instagram",
+      "post_id": "ig-post-006",
+      "product_id": "UG-PRD-102"
+    },
+    {
+      "channel": "tiktok",
+      "post_id": "tt-post-008",
+      "product_id": "UG-PRD-104"
+    },
+    {
+      "channel": "instagram",
+      "post_id": "ig-post-010",
+      "product_id": "UG-PRD-103"
+    },
+    {
+      "channel": "email",
+      "post_id": "email-thread-011",
+      "product_id": "UG-PRD-105"
+    },
+    {
+      "channel": "instagram",
+      "post_id": "ig-post-014",
+      "product_id": "UG-PRD-101"
+    },
+    {
+      "channel": "email",
+      "post_id": "email-thread-015",
+      "product_id": "UG-PRD-107"
+    },
+    {
+      "channel": "instagram",
+      "post_id": "ig-post-017",
+      "product_id": "UG-PRD-106"
+    },
+    {
+      "channel": "email",
+      "post_id": "email-thread-018",
+      "product_id": "UG-PRD-106"
+    },
+    {
+      "channel": "facebook",
+      "post_id": "fb-post-019",
+      "product_id": "UG-PRD-107"
+    },
+    {
+      "channel": "instagram",
+      "post_id": "ig-post-020",
+      "product_id": "UG-PRD-108"
+    }
+  ]
+}

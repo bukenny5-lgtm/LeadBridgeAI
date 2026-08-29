@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "business_id": "SB-001",
+  "business_name": "Kampala Ridge Synthetic Supply",
+  "location_summary": "Synthetic customer desk in central Kampala near a public transport corridor; not a private address.",
+  "opening_hours": {
+    "monday_to_friday": "08:00-18:00",
+    "saturday": "09:00-15:00",
+    "sunday": "closed"
+  },
+  "contact_policy": {
+    "supports_whatsapp_handoff": true,
+    "supports_phone_handoff": true,
+    "real_phone_number": null,
+    "real_email": null,
+    "customer_handoff_channel": "human_review_queue"
+  }
+}

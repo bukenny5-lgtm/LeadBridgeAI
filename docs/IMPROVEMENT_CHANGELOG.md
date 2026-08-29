@@ -51,6 +51,16 @@
 - Refreshed the frozen baseline report after the precedence revision, resulting in a 20.00% primary score on the 20-case synthetic set.
 - Preserved the earlier 15.00% and 10.00% checkpoints as historical baseline runs, including the failed broad-language experiment.
 
+### Phase 3 verified-tool recovery
+
+- Added a verified read-only tool layer over the synthetic fixtures for product, search, inventory, delivery, negotiation, and order-field checks.
+- Chose a self-contained TypeScript validator after two `zod` installation timeouts in the workspace.
+- Added tool-assisted evaluation output in `evaluation/results/tool-assisted.json` and `evaluation/results/tool-assisted.md`.
+- Generated sanitized runtime-agent trajectories in `traces/runtime-agent/tool-assisted/` for price, media, delivery, in-policy negotiation, below-minimum negotiation, confirmed order capture, prompt injection, a failed evaluation case, and an unavailable-variant case.
+- Regenerated the tool-assisted evaluation after precedence and variant-branch repairs, landing on a 60.00% primary score with 12 passing cases and 8 failing cases.
+- Kept the frozen baseline unchanged at 20.00% and used it as the comparison point for the verified-tool pass.
+- Resolved workspace ACL issues on generated output files so the evaluators could overwrite the reports in place.
+
 ## Future entries
 
 Future iterations should add:

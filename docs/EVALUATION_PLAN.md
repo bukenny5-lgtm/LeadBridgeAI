@@ -30,6 +30,18 @@ Phase 2 recorded three baseline checkpoints for traceability:
 
 The broad 10.00% run is preserved as a failed experiment, not as the authoritative baseline.
 
+## Tool-assisted result
+
+Phase 3 added a verified-tool pass that reuses the same 20 runnable cases and the same scorer. The measured result is:
+
+- 60.00% primary score
+- 12 passing cases
+- 8 failing cases
+- +40.00 points versus the frozen 20.00% baseline
+- +200.00% relative change versus the frozen baseline
+
+This run measures verified tools and synthetic context handling, not model reasoning or live integrations.
+
 ## Target outcome
 
 The proposed target for a strong final result is:

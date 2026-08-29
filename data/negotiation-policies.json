@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "policies": [
+    {
+      "policy_id": "NEG-101",
+      "product_id": "UG-PRD-101",
+      "listed_price_ugx": 18000,
+      "minimum_permitted_price_ugx": 17000,
+      "ordinary_discount_authority_pct": 5,
+      "bulk_threshold_units": 20,
+      "escalation_boundary": "below minimum or payment term change",
+      "disclosure_rule": "do_not_disclose_internal_minimum"
+    },
+    {
+      "policy_id": "NEG-102",
+      "product_id": "UG-PRD-102",
+      "listed_price_ugx": 45000,
+      "minimum_permitted_price_ugx": 40000,
+      "ordinary_discount_authority_pct": 5,
+      "bulk_threshold_units": 20,
+      "escalation_boundary": "below minimum or credit request",
+      "disclosure_rule": "do_not_disclose_internal_minimum"
+    },
+    {
+      "policy_id": "NEG-103",
+      "product_id": "UG-PRD-103",
+      "listed_price_ugx": 58000,
+      "minimum_permitted_price_ugx": 54000,
+      "ordinary_discount_authority_pct": 5,
+      "bulk_threshold_units": 10,
+      "escalation_boundary": "below minimum or delivery promise change",
+      "disclosure_rule": "do_not_disclose_internal_minimum"
+    },
+    {
+      "policy_id": "NEG-104",
+      "product_id": "UG-PRD-104",
+      "listed_price_ugx": 32000,
+      "minimum_permitted_price_ugx": 30000,
+      "ordinary_discount_authority_pct": 0,
+      "bulk_threshold_units": 25,
+      "escalation_boundary": "out of stock",
+      "disclosure_rule": "do_not_disclose_internal_minimum"
+    },
+    {
+      "policy_id": "NEG-105",
+      "product_id": "UG-PRD-105",
+      "listed_price_ugx": 95000,
+      "minimum_permitted_price_ugx": 90000,
+      "ordinary_discount_authority_pct": 3,
+      "bulk_threshold_units": 20,
+      "escalation_boundary": "below minimum or payment term change",
+      "disclosure_rule": "do_not_disclose_internal_minimum"
+    },
+    {
+      "policy_id": "NEG-106",
+      "product_id": "UG-PRD-106",
+      "listed_price_ugx": 12000,
+      "minimum_permitted_price_ugx": 11000,
+      "ordinary_discount_authority_pct": 5,
+      "bulk_threshold_units": 30,
+      "escalation_boundary": "below minimum or unsupported price match claim",
+      "disclosure_rule": "do_not_disclose_internal_minimum"
+    },
+    {
+      "policy_id": "NEG-107",
+      "product_id": "UG-PRD-107",
+      "listed_price_ugx": 260000,
+      "minimum_permitted_price_ugx": 240000,
+      "ordinary_discount_authority_pct": 7,
+      "bulk_threshold_units": 150,
+      "escalation_boundary": "below minimum or payment terms request",
+      "disclosure_rule": "do_not_disclose_internal_minimum"
+    },
+    {
+      "policy_id": "NEG-108",
+      "product_id": "UG-PRD-108",
+      "listed_price_ugx": 20000,
+      "minimum_permitted_price_ugx": 18500,
+      "ordinary_discount_authority_pct": 5,
+      "bulk_threshold_units": 25,
+      "escalation_boundary": "below minimum or stock pressure",
+      "disclosure_rule": "do_not_disclose_internal_minimum"
+    }
+  ]
+}

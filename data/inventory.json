@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-29T00:00:00Z",
+  "records": [
+    {
+      "product_id": "UG-PRD-101",
+      "variant_id": "standard-blue-1.5l",
+      "available_quantity": 42,
+      "stock_status": "in_stock"
+    },
+    {
+      "product_id": "UG-PRD-102",
+      "variant_id": "standard-s2",
+      "available_quantity": 16,
+      "stock_status": "in_stock"
+    },
+    {
+      "product_id": "UG-PRD-103",
+      "variant_id": "navy-b300",
+      "available_quantity": 27,
+      "stock_status": "in_stock"
+    },
+    {
+      "product_id": "UG-PRD-104",
+      "variant_id": "standard-4pack",
+      "available_quantity": 0,
+      "stock_status": "out_of_stock"
+    },
+    {
+      "product_id": "UG-PRD-105",
+      "variant_id": "compatible-standard",
+      "available_quantity": 8,
+      "stock_status": "low_stock"
+    },
+    {
+      "product_id": "UG-PRD-106",
+      "variant_id": "standard-lamp",
+      "available_quantity": 18,
+      "stock_status": "in_stock"
+    },
+    {
+      "product_id": "UG-PRD-107",
+      "variant_id": "mixed-bundle",
+      "available_quantity": 500,
+      "stock_status": "in_stock"
+    },
+    {
+      "product_id": "UG-PRD-108",
+      "variant_id": "green-750ml",
+      "available_quantity": 18,
+      "stock_status": "limited"
+    },
+    {
+      "product_id": "UG-PRD-108",
+      "variant_id": "blue-750ml",
+      "available_quantity": 12,
+      "stock_status": "in_stock"
+    }
+  ]
+}

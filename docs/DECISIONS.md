@@ -40,6 +40,18 @@ Status: Accepted
 
 The implemented Phase 2 baseline replaces the earlier prompt-style idea with a deterministic basic sales-inquiry automation. It must use only the allowed runnable inputs, remain fully reproducible without an API key, and serve as the stable lower bound for later agent comparisons.
 
+### D-007: Use self-contained validation after zod installation timeouts
+
+Status: Accepted
+
+Phase 3 attempted to install `zod` twice, but both installs timed out in this workspace. The implementation therefore uses a self-contained TypeScript validation layer over the synthetic fixtures instead of a new runtime schema dependency.
+
+### D-008: Add a verified tool layer before model-driven orchestration
+
+Status: Accepted
+
+Phase 3 introduces a deterministic, read-only tool layer over synthetic fixtures for product, inventory, delivery, and negotiation checks. The layer is designed as a reusable lower boundary for later model-driven agent orchestration and keeps tool arguments, evidence, and trace output sanitized.
+
 ## Pending decisions
 
 - Final product and inventory data source design.

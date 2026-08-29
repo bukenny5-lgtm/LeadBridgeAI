@@ -4,7 +4,7 @@
 
 This guide is an initial skeleton only.
 
-Phase 2 now uses a deterministic baseline and evaluation engine, and the authoritative frozen baseline is 20.00% on the 20-case synthetic set.
+Phase 3 now uses a deterministic baseline, a verified tool layer, and a self-contained validation path. The authoritative frozen baseline is still 20.00% on the 20-case synthetic set, and the tool-assisted pass currently measures 60.00% on the same cases.
 
 ## Known prerequisites
 
@@ -13,13 +13,16 @@ Phase 2 now uses a deterministic baseline and evaluation engine, and the authori
 
 ## Exact commands
 
-- `npm install`
 - `npm run typecheck`
 - `npm test`
+- `npm run validate:data`
 - `npm run evaluate:baseline`
+- `npm run evaluate:tools`
 - `npm run check`
 
 The earlier `npm install --strict-ssl=false` retry was an environment-specific workaround for a certificate verification failure and is not part of normal reproduction.
+
+Phase 3 attempted to install `zod` twice, but both installs timed out in this workspace. The shipped validator is therefore self-contained and does not require a new runtime schema dependency.
 
 ## What will be documented later
 
@@ -33,3 +36,5 @@ The earlier `npm install --strict-ssl=false` retry was an environment-specific w
 ## Status note
 
 Clean-environment reproduction has not been demonstrated yet.
+
+If the generated output folders are restored as read-only in a fresh checkout, make them writable before rerunning the evaluation commands so the reports and trajectories can be regenerated in place.

@@ -1,0 +1,1451 @@
+{
+  "evaluation_version": "3.0.0",
+  "timestamp": "2026-08-29T10:45:26.372Z",
+  "baseline_reference": {
+    "evaluation_file": "evaluation\\results\\baseline.json",
+    "primary_score": 20,
+    "passed_cases": 4,
+    "total_cases": 20
+  },
+  "comparison": {
+    "absolute_change_points": 40,
+    "relative_change_percent": 200
+  },
+  "baseline_name": "Deterministic basic sales-inquiry automation",
+  "baseline_description": "Frozen rule-based baseline used as the stable comparison point for the tool-assisted workflow.",
+  "tool_assisted_name": "Deterministic verified-tool workflow",
+  "tool_assisted_description": "Rule-based workflow that uses synthetic business data and controlled read-only tools to isolate the value of verified context.",
+  "resource_boundary": [
+    "channel",
+    "conversation messages",
+    "post_id",
+    "generic business description",
+    "synthetic business data",
+    "controlled read-only tools"
+  ],
+  "exact_command": "npm run evaluate:tools",
+  "case_count": 20,
+  "primary_metric": {
+    "name": "Correctly Handled Buying Opportunity Rate",
+    "score": 60,
+    "passed_cases": 12,
+    "total_cases": 20
+  },
+  "secondary_metrics": {
+    "intent_accuracy": 80,
+    "escalation_accuracy": 80,
+    "factual_integrity": 100,
+    "policy_safety": 100
+  },
+  "aggregate_counts": {
+    "passing_cases": 12,
+    "failing_cases": 8
+  },
+  "runtime_ms": 19,
+  "model_api_cost_usd": 0,
+  "environment_versions": {
+    "node": "v24.15.0",
+    "npm": "11.12.1",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "cases": [
+    {
+      "case_id": "LB-001",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "pricing_request"
+        ],
+        "product_id": "UG-PRD-101",
+        "action": "reply_with_verified_price",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "pricing_request"
+        ],
+        "product_id": "UG-PRD-101",
+        "action": "reply_with_verified_price",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "facebook",
+            "postId": "fb-post-001"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:facebook:fb-post-001",
+            "product:UG-PRD-101"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-101"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-101"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getNegotiationPolicy",
+          "sanitized_args": {
+            "productId": "UG-PRD-101",
+            "quantity": 1
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "policy:NEG-101"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:facebook:fb-post-001",
+        "product:UG-PRD-101",
+        "policy:NEG-101"
+      ],
+      "route": "pricing"
+    },
+    {
+      "case_id": "LB-002",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "availability_question"
+        ],
+        "product_id": "UG-PRD-102",
+        "action": "verify_stock_before_replying",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "availability_question"
+        ],
+        "product_id": "UG-PRD-102",
+        "action": "verify_stock_before_replying",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "instagram",
+            "postId": "ig-post-002"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:instagram:ig-post-002",
+            "product:UG-PRD-102"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-102"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-102"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "checkInventory",
+          "sanitized_args": {
+            "productId": "UG-PRD-102"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-102#standard-s2"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "checkInventory",
+          "sanitized_args": {
+            "productId": "UG-PRD-102"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-102#standard-s2"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:instagram:ig-post-002",
+        "product:UG-PRD-102",
+        "product:UG-PRD-102#standard-s2"
+      ],
+      "route": "availability"
+    },
+    {
+      "case_id": "LB-003",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "correct_action_escalation"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "variant_request"
+        ],
+        "product_id": "UG-PRD-103",
+        "action": "ask_for_variant_confirmation",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "product_image_request"
+        ],
+        "product_id": "UG-PRD-103",
+        "action": "share_verified_product_image",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "tiktok",
+            "postId": "tt-post-003"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:tiktok:tt-post-003",
+            "product:UG-PRD-103"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-103"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-103"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-103"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-103"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:tiktok:tt-post-003",
+        "product:UG-PRD-103"
+      ],
+      "route": "variant"
+    },
+    {
+      "case_id": "LB-004",
+      "pass": false,
+      "failed_dimensions": [
+        "product_association_or_clarification"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "business_location_question"
+        ],
+        "product_id": null,
+        "action": "provide_verified_business_location",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "business_location_question"
+        ],
+        "product_id": "UG-PRD-102",
+        "action": "provide_verified_business_location",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "searchCatalogue",
+          "sanitized_args": {
+            "query": "where exactly are you based for pickup in kampala"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-105",
+            "product:UG-PRD-101",
+            "product:UG-PRD-102"
+          ],
+          "duration_ms": 1
+        },
+        {
+          "tool_name": "getBusinessLocation",
+          "sanitized_args": {},
+          "outcome": "found",
+          "evidence_refs": [
+            "business:SB-001"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "product:UG-PRD-105",
+        "product:UG-PRD-101",
+        "product:UG-PRD-102",
+        "business:SB-001"
+      ],
+      "route": "location"
+    },
+    {
+      "case_id": "LB-005",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "correct_action_escalation"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "variant_request"
+        ],
+        "product_id": "UG-PRD-101",
+        "action": "ask_for_variant_confirmation",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "delivery_question"
+        ],
+        "product_id": "UG-PRD-101",
+        "action": "verify_delivery_terms_before_replying",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "facebook",
+            "postId": "fb-post-005"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:facebook:fb-post-005",
+            "product:UG-PRD-101"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-101"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-101"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-101"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-101"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:facebook:fb-post-005",
+        "product:UG-PRD-101"
+      ],
+      "route": "variant"
+    },
+    {
+      "case_id": "LB-006",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "negotiation_within_policy"
+        ],
+        "product_id": "UG-PRD-102",
+        "action": "apply_allowed_discount_or_confirm_verified_price",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "negotiation_within_policy"
+        ],
+        "product_id": "UG-PRD-102",
+        "action": "apply_allowed_discount_or_confirm_verified_price",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "instagram",
+            "postId": "ig-post-006"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:instagram:ig-post-006",
+            "product:UG-PRD-102"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-102"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-102"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getNegotiationPolicy",
+          "sanitized_args": {
+            "productId": "UG-PRD-102",
+            "quantity": 10
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "policy:NEG-102"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:instagram:ig-post-006",
+        "product:UG-PRD-102",
+        "policy:NEG-102"
+      ],
+      "route": "negotiation"
+    },
+    {
+      "case_id": "LB-007",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "negotiation"
+        ],
+        "product_id": null,
+        "action": "counter_with_verified_price_or_route_to_review",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "price_offer_below_minimum"
+        ],
+        "product_id": "UG-PRD-105",
+        "action": "decline_below_minimum_price",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "searchCatalogue",
+          "sanitized_args": {
+            "query": "i will only pay 70 000 for the toner pack"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-105",
+            "product:UG-PRD-103",
+            "product:UG-PRD-104"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "product:UG-PRD-105",
+        "product:UG-PRD-103",
+        "product:UG-PRD-104"
+      ],
+      "route": "negotiation"
+    },
+    {
+      "case_id": "LB-008",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "unavailable_stock_request"
+        ],
+        "product_id": "UG-PRD-104",
+        "action": "explain_unavailable_stock_and_offer_waitlist",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "unavailable_stock_request"
+        ],
+        "product_id": "UG-PRD-104",
+        "action": "explain_unavailable_stock_and_offer_waitlist",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "tiktok",
+            "postId": "tt-post-008"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:tiktok:tt-post-008",
+            "product:UG-PRD-104"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-104"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-104"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "checkInventory",
+          "sanitized_args": {
+            "productId": "UG-PRD-104"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-104#standard-4pack"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:tiktok:tt-post-008",
+        "product:UG-PRD-104",
+        "product:UG-PRD-104#standard-4pack"
+      ],
+      "route": "inventory_unavailable"
+    },
+    {
+      "case_id": "LB-009",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "ambiguous_product_reference"
+        ],
+        "product_id": null,
+        "action": "ask_for_clarifying_product_details",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "ambiguous_product_reference"
+        ],
+        "product_id": null,
+        "action": "ask_for_clarifying_product_details",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "facebook",
+            "postId": "fb-post-009"
+          },
+          "outcome": "not_found",
+          "evidence_refs": [
+            "post:facebook:fb-post-009"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "searchCatalogue",
+          "sanitized_args": {
+            "query": "do you still have the same one from the last post"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-105",
+            "product:UG-PRD-103",
+            "product:UG-PRD-106"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:facebook:fb-post-009",
+        "product:UG-PRD-105",
+        "product:UG-PRD-103",
+        "product:UG-PRD-106"
+      ],
+      "route": "clarification"
+    },
+    {
+      "case_id": "LB-010",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "correct_action_escalation",
+        "provisional_order_decision",
+        "order_fields"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "variant_request"
+        ],
+        "product_id": "UG-PRD-103",
+        "action": "ask_for_variant_confirmation",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "multi_message_memory",
+          "order_intent"
+        ],
+        "product_id": "UG-PRD-103",
+        "action": "use_prior_context_to_confirm_order_details",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "variant",
+          "quantity",
+          "delivery_city",
+          "delivery_date"
+        ]
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "instagram",
+            "postId": "ig-post-010"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:instagram:ig-post-010",
+            "product:UG-PRD-103"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-103"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-103"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-103"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-103"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:instagram:ig-post-010",
+        "product:UG-PRD-103"
+      ],
+      "route": "variant"
+    },
+    {
+      "case_id": "LB-011",
+      "pass": false,
+      "failed_dimensions": [
+        "product_association_or_clarification"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "confirmed_order_intent"
+        ],
+        "product_id": null,
+        "action": "capture_provisional_order_details",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "quantity",
+          "payment_timing",
+          "invoice_request"
+        ]
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "confirmed_order_intent"
+        ],
+        "product_id": "UG-PRD-105",
+        "action": "capture_provisional_order_details",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "quantity",
+          "payment_timing",
+          "invoice_request"
+        ]
+      },
+      "tool_calls": [
+        {
+          "tool_name": "searchCatalogue",
+          "sanitized_args": {
+            "query": "please send the invoice for 3 toner packs i will pay today"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-105",
+            "product:UG-PRD-103",
+            "product:UG-PRD-106"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "product:UG-PRD-105",
+        "product:UG-PRD-103",
+        "product:UG-PRD-106"
+      ],
+      "route": "order_capture"
+    },
+    {
+      "case_id": "LB-012",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": false,
+        "intent_labels": [
+          "compliment_only"
+        ],
+        "product_id": null,
+        "action": "thank_without_lead_creation",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": false,
+        "intent_labels": [
+          "compliment_only"
+        ],
+        "product_id": null,
+        "action": "thank_without_lead_creation",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "tiktok",
+            "postId": "tt-post-012"
+          },
+          "outcome": "not_found",
+          "evidence_refs": [
+            "post:tiktok:tt-post-012"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "searchCatalogue",
+          "sanitized_args": {
+            "query": "your posts are really polished nice work"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-106"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-106"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-106"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:tiktok:tt-post-012",
+        "product:UG-PRD-106"
+      ],
+      "route": "compliment"
+    },
+    {
+      "case_id": "LB-013",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for the message.",
+        "is_lead": false,
+        "intent_labels": [
+          "spam_or_unrelated"
+        ],
+        "product_id": null,
+        "action": "ignore_or_flag_as_spam",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": false,
+        "intent_labels": [
+          "spam_or_unrelated"
+        ],
+        "product_id": null,
+        "action": "ignore_or_flag_as_spam",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "facebook",
+            "postId": "fb-post-013"
+          },
+          "outcome": "not_found",
+          "evidence_refs": [
+            "post:facebook:fb-post-013"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:facebook:fb-post-013"
+      ],
+      "route": "spam"
+    },
+    {
+      "case_id": "LB-014",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": false,
+        "intent_labels": [
+          "complaint",
+          "refund_request"
+        ],
+        "product_id": "UG-PRD-101",
+        "action": "escalate_complaint_for_human_review",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": false,
+        "intent_labels": [
+          "complaint",
+          "refund_request"
+        ],
+        "product_id": "UG-PRD-101",
+        "action": "escalate_complaint_for_human_review",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "instagram",
+            "postId": "ig-post-014"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:instagram:ig-post-014",
+            "product:UG-PRD-101"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-101"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-101"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:instagram:ig-post-014",
+        "product:UG-PRD-101"
+      ],
+      "route": "complaint"
+    },
+    {
+      "case_id": "LB-015",
+      "pass": false,
+      "failed_dimensions": [
+        "product_association_or_clarification"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": true,
+        "intent_labels": [
+          "phone_call_request",
+          "human_handoff"
+        ],
+        "product_id": null,
+        "action": "route_to_human_for_call_back",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "phone_call_request",
+          "human_handoff"
+        ],
+        "product_id": "UG-PRD-107",
+        "action": "route_to_human_for_call_back",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [],
+      "evidence_refs": [],
+      "route": "phone_handoff"
+    },
+    {
+      "case_id": "LB-016",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": false,
+        "intent_labels": [
+          "prompt_injection"
+        ],
+        "product_id": null,
+        "action": "reject_and_escalate_security_issue",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": false,
+        "intent_labels": [
+          "prompt_injection"
+        ],
+        "product_id": null,
+        "action": "reject_and_escalate_security_issue",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "facebook",
+            "postId": "fb-post-016"
+          },
+          "outcome": "not_found",
+          "evidence_refs": [
+            "post:facebook:fb-post-016"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:facebook:fb-post-016"
+      ],
+      "route": "prompt_injection"
+    },
+    {
+      "case_id": "LB-017",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "unsupported_price_claim",
+          "price_match_request"
+        ],
+        "product_id": "UG-PRD-106",
+        "action": "respond_with_verified_price_and_refuse_unsupported_claim",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "unsupported_price_claim",
+          "price_match_request"
+        ],
+        "product_id": "UG-PRD-106",
+        "action": "respond_with_verified_price_and_refuse_unsupported_claim",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "instagram",
+            "postId": "ig-post-017"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:instagram:ig-post-017",
+            "product:UG-PRD-106"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-106"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-106"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getNegotiationPolicy",
+          "sanitized_args": {
+            "productId": "UG-PRD-106",
+            "quantity": 8
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "policy:NEG-106"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:instagram:ig-post-017",
+        "product:UG-PRD-106",
+        "policy:NEG-106"
+      ],
+      "route": "unsupported_price_claim"
+    },
+    {
+      "case_id": "LB-018",
+      "pass": false,
+      "failed_dimensions": [
+        "product_association_or_clarification"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "duplicate_inquiry",
+          "unsupported_price_claim"
+        ],
+        "product_id": null,
+        "action": "deduplicate_and_link_existing_thread",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "duplicate_inquiry",
+          "unsupported_price_claim"
+        ],
+        "product_id": "UG-PRD-106",
+        "action": "deduplicate_and_link_existing_thread",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "tool_calls": [
+        {
+          "tool_name": "searchCatalogue",
+          "sanitized_args": {
+            "query": "another seller quoted me 8 000 for the same led lamp so you must match it"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-106",
+            "product:UG-PRD-102",
+            "product:UG-PRD-108"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "product:UG-PRD-106",
+        "product:UG-PRD-102",
+        "product:UG-PRD-108"
+      ],
+      "route": "unsupported_price_claim"
+    },
+    {
+      "case_id": "LB-019",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "bulk_order",
+          "policy_dependent_discount"
+        ],
+        "product_id": "UG-PRD-107",
+        "action": "apply_bulk_policy_and_escalate_payment_terms",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "quantity",
+          "discount_request",
+          "payment_terms"
+        ]
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "bulk_order",
+          "policy_dependent_discount"
+        ],
+        "product_id": "UG-PRD-107",
+        "action": "apply_bulk_policy_and_escalate_payment_terms",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "quantity",
+          "discount_request",
+          "payment_terms"
+        ]
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "facebook",
+            "postId": "fb-post-019"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:facebook:fb-post-019",
+            "product:UG-PRD-107"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-107"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-107"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getNegotiationPolicy",
+          "sanitized_args": {
+            "productId": "UG-PRD-107",
+            "quantity": 180
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "policy:NEG-107"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:facebook:fb-post-019",
+        "product:UG-PRD-107",
+        "policy:NEG-107"
+      ],
+      "route": "negotiation"
+    },
+    {
+      "case_id": "LB-020",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "variant_request",
+          "quantity_request",
+          "negotiation",
+          "inventory_constraint",
+          "delivery_constraint"
+        ],
+        "product_id": "UG-PRD-108",
+        "action": "negotiate_with_inventory_and_delivery_constraints",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "variant",
+          "quantity",
+          "discount_request",
+          "partial_fulfillment",
+          "delivery_date"
+        ]
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "variant_request",
+          "quantity_request",
+          "negotiation",
+          "inventory_constraint",
+          "delivery_constraint"
+        ],
+        "product_id": "UG-PRD-108",
+        "action": "negotiate_with_inventory_and_delivery_constraints",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "variant",
+          "quantity",
+          "discount_request",
+          "partial_fulfillment",
+          "delivery_date"
+        ]
+      },
+      "tool_calls": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "instagram",
+            "postId": "ig-post-020"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:instagram:ig-post-020",
+            "product:UG-PRD-108"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-108"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-108"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "checkInventory",
+          "sanitized_args": {
+            "productId": "UG-PRD-108",
+            "requestedVariant": "blue"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-108#blue-750ml"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getNegotiationPolicy",
+          "sanitized_args": {
+            "productId": "UG-PRD-108",
+            "quantity": 24
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "policy:NEG-108"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "checkInventory",
+          "sanitized_args": {
+            "productId": "UG-PRD-108",
+            "requestedVariant": "blue"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-108#blue-750ml"
+          ],
+          "duration_ms": 0
+        },
+        {
+          "tool_name": "getDeliveryOptions",
+          "sanitized_args": {
+            "destination": "Jinja Town"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "delivery:DEL-JIN-001:Jinja Town"
+          ],
+          "duration_ms": 0
+        }
+      ],
+      "evidence_refs": [
+        "post:instagram:ig-post-020",
+        "product:UG-PRD-108",
+        "product:UG-PRD-108#blue-750ml",
+        "policy:NEG-108",
+        "delivery:DEL-JIN-001:Jinja Town",
+        "policy:NEG-108"
+      ],
+      "route": "negotiation"
+    }
+  ]
+}
