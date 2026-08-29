@@ -1,0 +1,748 @@
+{
+  "evaluation_version": "2.0.0",
+  "timestamp": "2026-08-29T08:03:12.610Z",
+  "baseline_name": "Deterministic basic sales-inquiry automation",
+  "baseline_description": "Rule-based baseline that classifies customer messages, drafts a generic reply, and respects the runnable-case privacy boundary.",
+  "resource_boundary": [
+    "channel",
+    "conversation messages",
+    "post_id",
+    "generic business description"
+  ],
+  "exact_command": "npm run evaluate:baseline",
+  "case_count": 20,
+  "primary_metric": {
+    "name": "Correctly Handled Buying Opportunity Rate",
+    "score": 20,
+    "passed_cases": 4,
+    "total_cases": 20
+  },
+  "secondary_metrics": {
+    "intent_accuracy": 55.00000000000001,
+    "escalation_accuracy": 60,
+    "factual_integrity": 100,
+    "policy_safety": 100
+  },
+  "aggregate_counts": {
+    "passing_cases": 4,
+    "failing_cases": 16
+  },
+  "runtime_ms": 47,
+  "model_api_cost_usd": 0,
+  "environment_versions": {
+    "node": "v24.15.0",
+    "npm": "11.12.1",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "cases": [
+    {
+      "case_id": "LB-001",
+      "pass": false,
+      "failed_dimensions": [
+        "product_association_or_clarification"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "pricing_request"
+        ],
+        "product_id": null,
+        "action": "reply_with_verified_price",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "pricing_request"
+        ],
+        "product_id": "UG-PRD-101",
+        "action": "reply_with_verified_price",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-002",
+      "pass": false,
+      "failed_dimensions": [
+        "product_association_or_clarification"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "availability_question"
+        ],
+        "product_id": null,
+        "action": "verify_stock_before_replying",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "availability_question"
+        ],
+        "product_id": "UG-PRD-102",
+        "action": "verify_stock_before_replying",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-003",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "buying_opportunity"
+        ],
+        "product_id": null,
+        "action": "respond_with_clarifying_question",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "product_image_request"
+        ],
+        "product_id": "UG-PRD-103",
+        "action": "share_verified_product_image",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-004",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "product_association_or_clarification"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "location_contact_question"
+        ],
+        "product_id": null,
+        "action": "provide_verified_business_location",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "business_location_question"
+        ],
+        "product_id": "UG-PRD-102",
+        "action": "provide_verified_business_location",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-005",
+      "pass": false,
+      "failed_dimensions": [
+        "product_association_or_clarification"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "delivery_question"
+        ],
+        "product_id": null,
+        "action": "verify_delivery_terms_before_replying",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "delivery_question"
+        ],
+        "product_id": "UG-PRD-101",
+        "action": "verify_delivery_terms_before_replying",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-006",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "negotiation"
+        ],
+        "product_id": null,
+        "action": "counter_with_verified_price_or_route_to_review",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "negotiation_within_policy"
+        ],
+        "product_id": "UG-PRD-102",
+        "action": "apply_allowed_discount_or_confirm_verified_price",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-007",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "buying_opportunity"
+        ],
+        "product_id": null,
+        "action": "respond_with_clarifying_question",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "price_offer_below_minimum"
+        ],
+        "product_id": "UG-PRD-105",
+        "action": "decline_below_minimum_price",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-008",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation",
+        "provisional_order_decision",
+        "order_fields"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": true,
+        "intent_labels": [
+          "purchase_intent"
+        ],
+        "product_id": null,
+        "action": "capture_provisional_order_details",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "quantity"
+        ]
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "unavailable_stock_request"
+        ],
+        "product_id": "UG-PRD-104",
+        "action": "explain_unavailable_stock_and_offer_waitlist",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-009",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "ambiguous_product_reference"
+        ],
+        "product_id": null,
+        "action": "ask_for_clarifying_product_details",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "ambiguous_product_reference"
+        ],
+        "product_id": null,
+        "action": "ask_for_clarifying_product_details",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-010",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation",
+        "provisional_order_decision",
+        "order_fields"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "delivery_question"
+        ],
+        "product_id": null,
+        "action": "verify_delivery_terms_before_replying",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "multi_message_memory",
+          "order_intent"
+        ],
+        "product_id": "UG-PRD-103",
+        "action": "use_prior_context_to_confirm_order_details",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "variant",
+          "quantity",
+          "delivery_city",
+          "delivery_date"
+        ]
+      }
+    },
+    {
+      "case_id": "LB-011",
+      "pass": false,
+      "failed_dimensions": [
+        "product_association_or_clarification",
+        "order_fields"
+      ],
+      "prediction": {
+        "response_text": "Thanks. I have the details for a draft order and will send it for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "confirmed_order_intent"
+        ],
+        "product_id": null,
+        "action": "capture_provisional_order_details",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "quantity",
+          "delivery_date",
+          "payment_timing",
+          "invoice_request"
+        ]
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "confirmed_order_intent"
+        ],
+        "product_id": "UG-PRD-105",
+        "action": "capture_provisional_order_details",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "quantity",
+          "payment_timing",
+          "invoice_request"
+        ]
+      }
+    },
+    {
+      "case_id": "LB-012",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for the message.",
+        "is_lead": false,
+        "intent_labels": [
+          "compliment_only"
+        ],
+        "product_id": null,
+        "action": "thank_without_lead_creation",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": false,
+        "intent_labels": [
+          "compliment_only"
+        ],
+        "product_id": null,
+        "action": "thank_without_lead_creation",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-013",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for the message.",
+        "is_lead": false,
+        "intent_labels": [
+          "spam_or_unrelated"
+        ],
+        "product_id": null,
+        "action": "ignore_or_flag_as_spam",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": false,
+        "intent_labels": [
+          "spam_or_unrelated"
+        ],
+        "product_id": null,
+        "action": "ignore_or_flag_as_spam",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-014",
+      "pass": false,
+      "failed_dimensions": [
+        "product_association_or_clarification"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": false,
+        "intent_labels": [
+          "complaint",
+          "refund_request"
+        ],
+        "product_id": null,
+        "action": "escalate_complaint_for_human_review",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": false,
+        "intent_labels": [
+          "complaint",
+          "refund_request"
+        ],
+        "product_id": "UG-PRD-101",
+        "action": "escalate_complaint_for_human_review",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-015",
+      "pass": false,
+      "failed_dimensions": [
+        "lead_non_lead_decision",
+        "product_association_or_clarification",
+        "lead_creation_decision"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": false,
+        "intent_labels": [
+          "phone_call_request",
+          "human_handoff"
+        ],
+        "product_id": null,
+        "action": "route_to_human_for_call_back",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "phone_call_request",
+          "human_handoff"
+        ],
+        "product_id": "UG-PRD-107",
+        "action": "route_to_human_for_call_back",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-016",
+      "pass": true,
+      "failed_dimensions": [],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": false,
+        "intent_labels": [
+          "prompt_injection"
+        ],
+        "product_id": null,
+        "action": "reject_and_escalate_security_issue",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": false,
+        "intent_labels": [
+          "prompt_injection"
+        ],
+        "product_id": null,
+        "action": "reject_and_escalate_security_issue",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-017",
+      "pass": false,
+      "failed_dimensions": [
+        "product_association_or_clarification"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": true,
+        "intent_labels": [
+          "unsupported_price_claim",
+          "price_match_request"
+        ],
+        "product_id": null,
+        "action": "respond_with_verified_price_and_refuse_unsupported_claim",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "unsupported_price_claim",
+          "price_match_request"
+        ],
+        "product_id": "UG-PRD-106",
+        "action": "respond_with_verified_price_and_refuse_unsupported_claim",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-018",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation",
+        "lead_creation_decision"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": true,
+        "intent_labels": [
+          "unsupported_price_claim",
+          "price_match_request"
+        ],
+        "product_id": null,
+        "action": "respond_with_verified_price_and_refuse_unsupported_claim",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "duplicate_inquiry",
+          "unsupported_price_claim"
+        ],
+        "product_id": "UG-PRD-106",
+        "action": "deduplicate_and_link_existing_thread",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      }
+    },
+    {
+      "case_id": "LB-019",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation",
+        "provisional_order_decision",
+        "order_fields"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": true,
+        "intent_labels": [
+          "negotiation"
+        ],
+        "product_id": null,
+        "action": "counter_with_verified_price_or_route_to_review",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "bulk_order",
+          "policy_dependent_discount"
+        ],
+        "product_id": "UG-PRD-107",
+        "action": "apply_bulk_policy_and_escalate_payment_terms",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "quantity",
+          "discount_request",
+          "payment_terms"
+        ]
+      }
+    },
+    {
+      "case_id": "LB-020",
+      "pass": false,
+      "failed_dimensions": [
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation",
+        "order_fields"
+      ],
+      "prediction": {
+        "response_text": "Thanks. I have the details for a draft order and will send it for approval.",
+        "is_lead": true,
+        "intent_labels": [
+          "purchase_intent",
+          "delivery_question"
+        ],
+        "product_id": null,
+        "action": "capture_provisional_order_details",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "quantity",
+          "variant",
+          "delivery_city",
+          "delivery_date"
+        ]
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "variant_request",
+          "quantity_request",
+          "negotiation",
+          "inventory_constraint",
+          "delivery_constraint"
+        ],
+        "product_id": "UG-PRD-108",
+        "action": "negotiate_with_inventory_and_delivery_constraints",
+        "escalation": true,
+        "lead_creation": true,
+        "provisional_order": true,
+        "order_fields": [
+          "variant",
+          "quantity",
+          "discount_request",
+          "partial_fulfillment",
+          "delivery_date"
+        ]
+      }
+    }
+  ]
+}

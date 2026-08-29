@@ -2,11 +2,11 @@
 
 LeadBridge AI is a verified cross-channel sales-response workflow for small and medium-sized online sellers.
 
-It is being prepared for the micro1 x HackerEarth Frontier Engineering Challenge 2026 as a new repository foundation. The current phase is documentation, evaluation design, and synthetic test data only. No application runtime, agent, API integration, or evaluation runner is implemented yet.
+It is being prepared for the micro1 x HackerEarth Frontier Engineering Challenge 2026 as a new repository foundation. The current phase is deterministic baseline and evaluation-engine work on top of the Phase 1 documentation and synthetic test data. No web app, runtime agent, API integration, or production deployment is implemented yet.
 
 ## Current phase
 
-Phase 1 focuses on:
+Phase 1 focused on:
 
 1. Defining the project brief and scope.
 2. Recording architecture and decision placeholders.
@@ -19,7 +19,6 @@ Phase 1 focuses on:
 - Web application implementation.
 - Runtime agent implementation.
 - API integrations.
-- Evaluation runner.
 - Production deployment.
 
 ## Key documents

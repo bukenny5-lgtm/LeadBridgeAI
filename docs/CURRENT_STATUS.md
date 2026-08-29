@@ -2,7 +2,7 @@
 
 ## Phase
 
-Phase 1 foundation work.
+Phase 2 deterministic baseline hardening and evaluation engine, verified and frozen.
 
 ## What exists now
 
@@ -15,17 +15,21 @@ Phase 1 foundation work.
 - Hot take hypothesis
 - Trace guide
 - Synthetic evaluation dataset
+- Deterministic baseline scaffold
+- Evaluation loader, scorer, and report generation scaffold
+- Baseline reports in `evaluation/results/`
 
 ## What does not exist yet
 
 - Application source code
 - Runtime agent
 - Live integrations
-- Evaluation runner
 - Production traces
 
 ## Status summary
 
-The repository is ready for implementation planning, but the baseline evaluation and synthetic dataset are the only operational artifacts created so far.
+The Phase 2 deterministic baseline and evaluation engine have been implemented, verified, and frozen as the authoritative baseline.
 
-The next implementation milestone should be a deterministic baseline plus an evaluation loader that can score the 20 synthetic cases before any broader application work begins.
+The authoritative frozen baseline result is 20.00% on the 20-case synthetic set after the precedence-and-suppression revision, with reports written to `evaluation/results/baseline.json` and `evaluation/results/baseline.md`.
+
+The next milestone is the data and tool layer, not the web UI.

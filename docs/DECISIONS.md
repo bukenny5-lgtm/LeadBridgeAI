@@ -34,6 +34,12 @@ For the hackathon version, every customer-facing response must be approved by a 
 
 Escalation is separate from approval. Responses must be escalated for specialized human review when the case is ambiguous, unsupported, out of policy, low confidence, or otherwise consequential, including price, stock, delivery, discounts, refunds, order capture, and call-back requests.
 
+### D-006: Use a deterministic basic-automation baseline
+
+Status: Accepted
+
+The implemented Phase 2 baseline replaces the earlier prompt-style idea with a deterministic basic sales-inquiry automation. It must use only the allowed runnable inputs, remain fully reproducible without an API key, and serve as the stable lower bound for later agent comparisons.
+
 ## Pending decisions
 
 - Final product and inventory data source design.

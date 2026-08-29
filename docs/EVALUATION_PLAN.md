@@ -18,6 +18,18 @@ LeadBridge AI will be evaluated on whether it can correctly handle cross-channel
 
 The baseline and the final solution must be compared against the same 20 synthetic cases with the same scoring rules. The evaluation should report all cases, including failures, so the comparison remains honest and reproducible.
 
+The implemented Phase 2 baseline is a deterministic basic sales-inquiry automation. It receives only channel, conversation messages, post_id, and a generic business description. It must not receive expected answers, rationales, prohibited actions, catalogue data, inventory, negotiation limits, delivery policies, location records, or final-agent instructions.
+
+## Baseline history
+
+Phase 2 recorded three baseline checkpoints for traceability:
+
+- Initial narrow baseline: 15.00%, passing LB-009, LB-012, and LB-013.
+- Broad phrase-family experiment: 10.00%, passing only LB-009 and LB-012.
+- Precedence revision and frozen baseline: 20.00%, passing LB-009, LB-012, LB-013, and LB-016.
+
+The broad 10.00% run is preserved as a failed experiment, not as the authoritative baseline.
+
 ## Target outcome
 
 The proposed target for a strong final result is:
