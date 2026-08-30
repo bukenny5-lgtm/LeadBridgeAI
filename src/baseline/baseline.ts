@@ -1,5 +1,6 @@
 import type { ConversationMessage } from "../shared/types.js";
 import type { Prediction, RunnableEvaluationCase } from "../evaluation/case-schema.js";
+import type { ActionLabel, IntentLabel, OrderField } from "../evaluation/canonical-contract.js";
 
 type TextPattern = string | RegExp;
 
@@ -186,7 +187,7 @@ function matchesAny(text: string, patterns: TextPattern[]): boolean {
   return patterns.some((pattern) => matchesPattern(text, pattern));
 }
 
-function uniqueStrings(values: string[]): string[] {
+function uniqueStrings<T extends string>(values: T[]): T[] {
   return [...new Set(values)];
 }
 
@@ -330,8 +331,8 @@ function inferLead(text: string): boolean {
   );
 }
 
-function inferIntentLabels(text: string): string[] {
-  const labels: string[] = [];
+function inferIntentLabels(text: string): IntentLabel[] {
+  const labels: IntentLabel[] = [];
   const spam = isSpam(text);
   const complaint = !spam && isComplaint(text);
   const phone = !spam && !complaint && isPhoneRequest(text);
@@ -377,7 +378,7 @@ function inferIntentLabels(text: string): string[] {
     labels.push("confirmed_order_intent");
   }
   if (purchaseIntent) {
-    labels.push("purchase_intent");
+    labels.push("order_intent");
   }
   if (negotiation) {
     labels.push("negotiation");
@@ -386,13 +387,13 @@ function inferIntentLabels(text: string): string[] {
     labels.push("availability_question");
   }
   if (media) {
-    labels.push("media_request");
+    labels.push("product_image_request");
   }
   if (variant) {
     labels.push("variant_request");
   }
   if (location) {
-    labels.push("location_contact_question");
+    labels.push("business_location_question");
   }
   if (delivery) {
     labels.push("delivery_question");
@@ -401,12 +402,12 @@ function inferIntentLabels(text: string): string[] {
     labels.push("pricing_request");
   }
   if (inferLead(text) && labels.length === 0) {
-    labels.push("buying_opportunity");
+    labels.push("ambiguous_product_reference");
   }
   return uniqueStrings(labels);
 }
 
-function inferAction(text: string): string {
+function inferAction(text: string): ActionLabel {
   if (isSpam(text)) {
     return "ignore_or_flag_as_spam";
   }
@@ -432,19 +433,19 @@ function inferAction(text: string): string {
     return "capture_provisional_order_details";
   }
   if (isNegotiation(text) && /\bwholesale\b/.test(text)) {
-    return "route_bulk_policy_case_for_approval";
+    return "apply_bulk_policy_and_escalate_payment_terms";
   }
   if (isNegotiation(text) && /\bdelivery\b/.test(text)) {
-    return "review_negotiation_with_inventory_and_delivery_constraints";
+    return "negotiate_with_inventory_and_delivery_constraints";
   }
   if (isNegotiation(text)) {
-    return "counter_with_verified_price_or_route_to_review";
+    return "respond_with_verified_price_and_refuse_unsupported_claim";
   }
   if (isAvailabilityQuestion(text)) {
     return "verify_stock_before_replying";
   }
   if (isVariantRequest(text)) {
-    return "ask_for_variant_confirmation";
+    return "ask_for_clarifying_product_details";
   }
   if (isMediaRequest(text)) {
     return "share_verified_product_image";
@@ -458,15 +459,15 @@ function inferAction(text: string): string {
   if (isPriceQuestion(text)) {
     return "reply_with_verified_price";
   }
-  return "respond_with_clarifying_question";
+  return "ask_for_clarifying_product_details";
 }
 
 function inferProductId(_text: string): string | null {
   return null;
 }
 
-function extractOrderFields(text: string): string[] | null {
-  const fields = new Set<string>();
+function extractOrderFields(text: string): OrderField[] | null {
+  const fields = new Set<OrderField>();
   if (/\b\d+\b/.test(text) || /\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\b/.test(text)) {
     fields.add("quantity");
   }

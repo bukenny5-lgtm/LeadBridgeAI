@@ -9,7 +9,7 @@
     "negotiation"
   ],
   "product_id": null,
-  "action": "counter_with_verified_price_or_route_to_review",
+  "action": "respond_with_verified_price_and_refuse_unsupported_claim",
   "escalation": false,
   "lead_creation": true,
   "provisional_order": false,

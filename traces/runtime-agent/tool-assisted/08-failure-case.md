@@ -23,7 +23,7 @@
   - Outcome: found
   - Args: {"query":"another seller quoted me 8 000 for the same led lamp so you must match it"}
   - Evidence: product:UG-PRD-106, product:UG-PRD-102, product:UG-PRD-108
-  - Duration: 1 ms
+  - Duration: 0 ms
 
 ## Workflow Decision
 

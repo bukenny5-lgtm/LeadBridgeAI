@@ -1,4 +1,5 @@
 import type { Prediction, RunnableEvaluationCase } from "../evaluation/case-schema.js";
+import type { ActionLabel, IntentLabel, OrderField } from "../evaluation/canonical-contract.js";
 import {
   checkInventory,
   evaluateOffer,
@@ -232,8 +233,8 @@ function extractVariantHint(text: string): string | null {
   return null;
 }
 
-function extractApprovalFields(text: string): string[] {
-  const fields = new Set<string>();
+function extractApprovalFields(text: string): OrderField[] {
+  const fields = new Set<OrderField>();
   if (extractQuantity(text) !== null) fields.add("quantity");
   if (extractVariantHint(text)) fields.add("variant");
   const destination = extractDestination(text);
@@ -262,9 +263,9 @@ function createPrediction(data: Partial<Prediction>): Prediction {
   return {
     response_text: data.response_text ?? "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
     is_lead: data.is_lead ?? true,
-    intent_labels: data.intent_labels ?? ["buying_opportunity"],
+    intent_labels: data.intent_labels ?? ["ambiguous_product_reference"],
     product_id: data.product_id ?? null,
-    action: data.action ?? "respond_with_clarifying_question",
+    action: data.action ?? "ask_for_clarifying_product_details",
     escalation: data.escalation ?? false,
     lead_creation: data.lead_creation ?? true,
     provisional_order: data.provisional_order ?? false,
@@ -497,7 +498,7 @@ export function runToolAssistedWorkflow(caseRecord: RunnableEvaluationCase): Too
       };
       pushCall(identifyMissingOrderFields(orderDraft));
     }
-    const labels = isConfirmedOrderMessage ? ["confirmed_order_intent"] : ["purchase_intent"];
+    const labels: IntentLabel[] = isConfirmedOrderMessage ? ["confirmed_order_intent"] : ["order_intent"];
     const fields = approvalFields.length ? approvalFields : null;
     return {
       prediction: createPrediction({
@@ -522,7 +523,7 @@ export function runToolAssistedWorkflow(caseRecord: RunnableEvaluationCase): Too
           prediction: createPrediction({
             intent_labels: ["negotiation"],
             product_id: productId,
-            action: "counter_with_verified_price_or_route_to_review",
+            action: "respond_with_verified_price_and_refuse_unsupported_claim",
             escalation: /\bcredit\b|\bdays to pay\b|\bpayment terms\b/.test(text),
           }),
           tool_calls: toolCalls,
@@ -619,7 +620,7 @@ export function runToolAssistedWorkflow(caseRecord: RunnableEvaluationCase): Too
       prediction: createPrediction({
         intent_labels: ["negotiation"],
         product_id: productId,
-        action: "counter_with_verified_price_or_route_to_review",
+        action: "respond_with_verified_price_and_refuse_unsupported_claim",
         escalation: /\bcredit\b|\bdays to pay\b|\bpayment terms\b/.test(text),
       }),
       tool_calls: toolCalls,
@@ -684,7 +685,7 @@ export function runToolAssistedWorkflow(caseRecord: RunnableEvaluationCase): Too
       prediction: createPrediction({
         intent_labels: ["variant_request"],
         product_id: productId,
-        action: "ask_for_variant_confirmation",
+        action: "ask_for_clarifying_product_details",
       }),
       tool_calls: toolCalls,
       evidence_refs: [...evidenceRefs],
@@ -768,8 +769,8 @@ export function runToolAssistedWorkflow(caseRecord: RunnableEvaluationCase): Too
     return {
       prediction: createPrediction({
         product_id: productId,
-        intent_labels: ["buying_opportunity"],
-        action: "respond_with_clarifying_question",
+        intent_labels: ["ambiguous_product_reference"],
+        action: "ask_for_clarifying_product_details",
       }),
       tool_calls: toolCalls,
       evidence_refs: [...evidenceRefs],
@@ -780,9 +781,9 @@ export function runToolAssistedWorkflow(caseRecord: RunnableEvaluationCase): Too
   routeParts.push("clarification");
   return {
     prediction: createPrediction({
-      intent_labels: ["buying_opportunity"],
+      intent_labels: ["ambiguous_product_reference"],
       product_id: null,
-      action: "respond_with_clarifying_question",
+      action: "ask_for_clarifying_product_details",
     }),
     tool_calls: toolCalls,
     evidence_refs: [...evidenceRefs],

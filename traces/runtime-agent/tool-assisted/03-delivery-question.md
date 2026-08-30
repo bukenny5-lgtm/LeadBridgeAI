@@ -9,7 +9,7 @@
     "variant_request"
   ],
   "product_id": "UG-PRD-101",
-  "action": "ask_for_variant_confirmation",
+  "action": "ask_for_clarifying_product_details",
   "escalation": false,
   "lead_creation": true,
   "provisional_order": false,
