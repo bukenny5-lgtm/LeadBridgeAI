@@ -31,7 +31,7 @@ describe("deterministic baseline", () => {
     expect(price.action).toBe("reply_with_verified_price");
     expect(availability.intent_labels).toContain("availability_question");
     expect(availability.action).toBe("verify_stock_before_replying");
-    expect(purchaseIntent.intent_labels).toContain("purchase_intent");
+    expect(purchaseIntent.intent_labels).toContain("order_intent");
     expect(purchaseIntent.action).toBe("capture_provisional_order_details");
   });
 
@@ -50,12 +50,12 @@ describe("deterministic baseline", () => {
     );
 
     expect(variant.intent_labels).toContain("variant_request");
-    expect(variant.action).toBe("ask_for_variant_confirmation");
-    expect(media.intent_labels).toContain("media_request");
+    expect(variant.action).toBe("ask_for_clarifying_product_details");
+    expect(media.intent_labels).toContain("product_image_request");
     expect(media.action).toBe("share_verified_product_image");
     expect(delivery.intent_labels).toContain("delivery_question");
     expect(delivery.action).toBe("verify_delivery_terms_before_replying");
-    expect(location.intent_labels).toContain("location_contact_question");
+    expect(location.intent_labels).toContain("business_location_question");
     expect(location.action).toBe("provide_verified_business_location");
   });
 
@@ -68,7 +68,7 @@ describe("deterministic baseline", () => {
     );
 
     expect(negotiation.intent_labels).toContain("negotiation");
-    expect(negotiation.action).toBe("counter_with_verified_price_or_route_to_review");
+    expect(negotiation.action).toBe("respond_with_verified_price_and_refuse_unsupported_claim");
     expect(negotiation.action).not.toContain("accept");
     expect(complaint.intent_labels).toContain("complaint");
     expect(complaint.escalation).toBe(true);
@@ -111,7 +111,7 @@ describe("deterministic baseline", () => {
     expect(spam.action).toBe("ignore_or_flag_as_spam");
 
     expect(complaint.intent_labels).toEqual(["complaint", "refund_request"]);
-    expect(complaint.intent_labels).not.toContain("purchase_intent");
+    expect(complaint.intent_labels).not.toContain("order_intent");
     expect(complaint.escalation).toBe(true);
     expect(complaint.action).toBe("escalate_complaint_for_human_review");
 
@@ -132,7 +132,7 @@ describe("deterministic baseline", () => {
     expect(delivery.intent_labels).not.toContain("pricing_request");
     expect(delivery.action).toBe("verify_delivery_terms_before_replying");
 
-    expect(pickupLocation.intent_labels).toContain("location_contact_question");
+    expect(pickupLocation.intent_labels).toContain("business_location_question");
     expect(pickupLocation.intent_labels).not.toContain("delivery_question");
     expect(pickupLocation.action).toBe("provide_verified_business_location");
   });
@@ -153,11 +153,11 @@ describe("deterministic baseline", () => {
     expect(multiIntent.intent_labels).toContain("variant_request");
     expect(multiIntent.action).toBe("verify_stock_before_replying");
 
-    expect(explicitPurchase.intent_labels).toContain("purchase_intent");
+    expect(explicitPurchase.intent_labels).toContain("order_intent");
     expect(explicitPurchase.action).toBe("capture_provisional_order_details");
 
-    expect(genericNeed.intent_labels).not.toContain("purchase_intent");
-    expect(genericNeed.action).toBe("respond_with_clarifying_question");
+    expect(genericNeed.intent_labels).not.toContain("order_intent");
+    expect(genericNeed.action).toBe("ask_for_clarifying_product_details");
   });
 
   it("treats prompt injection as dominant even when the message includes buying language", () => {

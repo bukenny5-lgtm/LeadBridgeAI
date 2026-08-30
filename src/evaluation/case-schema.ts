@@ -2,16 +2,17 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import type { Channel, ConversationMessage } from "../shared/types.js";
 import { GENERIC_BUSINESS_DESCRIPTION } from "../shared/types.js";
+import type { ActionLabel, IntentLabel, OrderField } from "./canonical-contract.js";
 
 export interface AuthoringExpected {
   is_lead: boolean;
-  intent_labels: string[];
+  intent_labels: IntentLabel[];
   product_id: string | null;
-  action: string;
+  action: ActionLabel;
   escalation: boolean;
   lead_creation: boolean;
   provisional_order: boolean;
-  order_fields: string[] | null;
+  order_fields: OrderField[] | null;
 }
 
 export interface AuthoringEvaluationCase {
@@ -45,13 +46,13 @@ export interface RunnableEvaluationCase {
 export interface Prediction {
   response_text: string;
   is_lead: boolean;
-  intent_labels: string[];
+  intent_labels: IntentLabel[];
   product_id: string | null;
-  action: string;
+  action: ActionLabel;
   escalation: boolean;
   lead_creation: boolean;
   provisional_order: boolean;
-  order_fields: string[] | null;
+  order_fields: OrderField[] | null;
 }
 
 export interface LoadedEvaluationCase {
@@ -127,9 +128,9 @@ function readExpected(value: unknown): AuthoringExpected {
   assert(isRecord(value), "Expected expected to be an object");
   return {
     is_lead: readBoolean(value.is_lead, "expected.is_lead"),
-    intent_labels: readStringArray(value.intent_labels, "expected.intent_labels"),
+    intent_labels: readStringArray(value.intent_labels, "expected.intent_labels") as IntentLabel[],
     product_id: readNullableString(value.product_id, "expected.product_id"),
-    action: readString(value.action, "expected.action"),
+    action: readString(value.action, "expected.action") as ActionLabel,
     escalation: readBoolean(value.escalation, "expected.escalation"),
     lead_creation: readBoolean(value.lead_creation, "expected.lead_creation"),
     provisional_order: readBoolean(
@@ -139,7 +140,7 @@ function readExpected(value: unknown): AuthoringExpected {
     order_fields: readNullableStringArray(
       value.order_fields,
       "expected.order_fields",
-    ),
+    ) as OrderField[] | null,
   };
 }
 

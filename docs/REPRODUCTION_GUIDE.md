@@ -20,6 +20,10 @@ Phase 3 now uses a deterministic baseline, a verified tool layer, and a self-con
 - `npm run evaluate:tools`
 - `npm run check`
 
+The model-driven evaluator writes partial live runs to limit-specific files. For example, `npm run evaluate:agent:live -- --limit 1` writes `evaluation/results/agent-luna-limit-1.json` and `evaluation/results/agent-luna-limit-1.md`, while `--limit 5` writes `evaluation/results/agent-luna-limit-5.json` and `evaluation/results/agent-luna-limit-5.md`.
+
+Those partial reports are intentionally non-authoritative. Only a completed 20-case Luna run may use the plain `evaluation/results/agent-luna.json` and `evaluation/results/agent-luna.md` names.
+
 The earlier `npm install --strict-ssl=false` retry was an environment-specific workaround for a certificate verification failure and is not part of normal reproduction.
 
 Phase 3 attempted to install `zod` twice, but both installs timed out in this workspace. The shipped validator is therefore self-contained and does not require a new runtime schema dependency.

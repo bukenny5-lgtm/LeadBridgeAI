@@ -10,6 +10,9 @@
     "validate:data": "npm run build && node dist/validation/validate-data.js",
     "evaluate:baseline": "npm run build && node dist/evaluation/run-baseline.js",
     "evaluate:tools": "npm run build && node dist/evaluation/run-tools.js",
+    "evaluate:agent:mock": "npm run build && node dist/evaluation/run-agent.js --mode mock --prompt-version v2",
+    "evaluate:agent:hybrid:mock": "npm run build && node dist/evaluation/run-agent.js --mode mock --prompt-version sales-agent-hybrid-v1",
+    "evaluate:agent:live": "npm run build && node dist/evaluation/run-agent.js --mode live",
     "check": "npm run typecheck && npm test && npm run validate:data"
   },
   "devDependencies": {

@@ -1,4 +1,8 @@
 import type { AuthoringEvaluationCase, Prediction } from "./case-schema.js";
+import { CANONICAL_ACTIONS, CANONICAL_INTENT_LABELS } from "./canonical-contract.js";
+
+void CANONICAL_ACTIONS;
+void CANONICAL_INTENT_LABELS;
 
 export interface CaseScore {
   case_id: string;

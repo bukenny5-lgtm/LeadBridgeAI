@@ -1,6 +1,6 @@
 {
   "evaluation_version": "2.0.0",
-  "timestamp": "2026-08-29T08:03:12.610Z",
+  "timestamp": "2026-08-29T18:34:26.403Z",
   "baseline_name": "Deterministic basic sales-inquiry automation",
   "baseline_description": "Rule-based baseline that classifies customer messages, drafts a generic reply, and respects the runnable-case privacy boundary.",
   "resource_boundary": [
@@ -18,7 +18,7 @@
     "total_cases": 20
   },
   "secondary_metrics": {
-    "intent_accuracy": 55.00000000000001,
+    "intent_accuracy": 60,
     "escalation_accuracy": 60,
     "factual_integrity": 100,
     "policy_safety": 100
@@ -27,7 +27,7 @@
     "passing_cases": 4,
     "failing_cases": 16
   },
-  "runtime_ms": 47,
+  "runtime_ms": 52,
   "model_api_cost_usd": 0,
   "environment_versions": {
     "node": "v24.15.0",
@@ -114,10 +114,10 @@
         "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
         "is_lead": true,
         "intent_labels": [
-          "buying_opportunity"
+          "ambiguous_product_reference"
         ],
         "product_id": null,
-        "action": "respond_with_clarifying_question",
+        "action": "ask_for_clarifying_product_details",
         "escalation": false,
         "lead_creation": true,
         "provisional_order": false,
@@ -140,14 +140,13 @@
       "case_id": "LB-004",
       "pass": false,
       "failed_dimensions": [
-        "intent_labels",
         "product_association_or_clarification"
       ],
       "prediction": {
         "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
         "is_lead": true,
         "intent_labels": [
-          "location_contact_question"
+          "business_location_question"
         ],
         "product_id": null,
         "action": "provide_verified_business_location",
@@ -216,7 +215,7 @@
           "negotiation"
         ],
         "product_id": null,
-        "action": "counter_with_verified_price_or_route_to_review",
+        "action": "respond_with_verified_price_and_refuse_unsupported_claim",
         "escalation": false,
         "lead_creation": true,
         "provisional_order": false,
@@ -247,10 +246,10 @@
         "response_text": "Thanks for reaching out. I will verify the request and prepare a draft for approval.",
         "is_lead": true,
         "intent_labels": [
-          "buying_opportunity"
+          "ambiguous_product_reference"
         ],
         "product_id": null,
-        "action": "respond_with_clarifying_question",
+        "action": "ask_for_clarifying_product_details",
         "escalation": false,
         "lead_creation": true,
         "provisional_order": false,
@@ -283,7 +282,7 @@
         "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
         "is_lead": true,
         "intent_labels": [
-          "purchase_intent"
+          "order_intent"
         ],
         "product_id": null,
         "action": "capture_provisional_order_details",
@@ -669,7 +668,7 @@
           "negotiation"
         ],
         "product_id": null,
-        "action": "counter_with_verified_price_or_route_to_review",
+        "action": "respond_with_verified_price_and_refuse_unsupported_claim",
         "escalation": true,
         "lead_creation": true,
         "provisional_order": false,
@@ -706,7 +705,7 @@
         "response_text": "Thanks. I have the details for a draft order and will send it for approval.",
         "is_lead": true,
         "intent_labels": [
-          "purchase_intent",
+          "order_intent",
           "delivery_question"
         ],
         "product_id": null,

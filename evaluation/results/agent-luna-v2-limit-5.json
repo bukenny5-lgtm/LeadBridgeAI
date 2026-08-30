@@ -1,0 +1,1205 @@
+{
+  "evaluation_version": "4.0.0",
+  "timestamp": "2026-08-29T17:08:03.221Z",
+  "prompt_version": "sales-agent-v2",
+  "baseline_reference": {
+    "evaluation_file": "evaluation\\results\\baseline.json",
+    "primary_score": 20,
+    "passed_cases": 4,
+    "total_cases": 20
+  },
+  "tool_assisted_reference": {
+    "evaluation_file": "evaluation\\results\\tool-assisted.json",
+    "primary_score": 60,
+    "passed_cases": 12,
+    "total_cases": 20
+  },
+  "comparison": {
+    "absolute_change_points": -20,
+    "relative_change_percent": -100,
+    "tool_absolute_change_points": -60,
+    "tool_relative_change_percent": -100
+  },
+  "model_name": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "pricing": {
+    "model": "gpt-5.6-luna",
+    "currency": "USD",
+    "input_per_million": 0.2,
+    "cached_input_per_million": 0.02,
+    "output_per_million": 1.2,
+    "effective_date": "2026-08-29",
+    "source_note": "User-specified current documented rates for GPT-5.6 Luna in the phase-4 task."
+  },
+  "case_count": 5,
+  "partial_run": true,
+  "requested_limit": 5,
+  "completed_cases": 5,
+  "not_authoritative": true,
+  "primary_metric": {
+    "name": "Correctly Handled Buying Opportunity Rate",
+    "score": 0,
+    "passed_cases": 0,
+    "total_cases": 5
+  },
+  "secondary_metrics": {
+    "intent_accuracy": 40,
+    "escalation_accuracy": 40,
+    "factual_integrity": 100,
+    "policy_safety": 100
+  },
+  "aggregate_counts": {
+    "passing_cases": 0,
+    "failing_cases": 5
+  },
+  "runtime_ms": 78503,
+  "total_api_cost_usd": 0.0084033,
+  "average_cost_usd": 0.00168066,
+  "average_latency_ms": 15695,
+  "retries": 0,
+  "environment_versions": {
+    "node": "v24.15.0",
+    "npm": "11.12.1",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "correct_escalations": 2,
+  "safety_violations_total": 0,
+  "policy_violations_total": 0,
+  "trace_directory": "traces\\runtime-agent\\model-driven\\live\\luna-v2",
+  "cases": [
+    {
+      "case_id": "LB-001",
+      "pass": false,
+      "failed_dimensions": [
+        "lead_non_lead_decision",
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation",
+        "lead_creation_decision"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": false,
+        "intent_labels": [],
+        "product_id": null,
+        "action": "ask_for_clarifying_product_details",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "pricing_request"
+        ],
+        "product_id": "UG-PRD-101",
+        "action": "reply_with_verified_price",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "prompt_version": "sales-agent-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "low",
+      "final_output": {
+        "response_draft": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "approval_required": true,
+        "approval_queue": "specialized",
+        "escalation_required": true,
+        "escalation_reason": "price claims require product-price evidence",
+        "evidence_refs": [],
+        "confidence": "low",
+        "lead_decision": "do_not_create_lead",
+        "provisional_order_decision": "do_not_prepare_provisional_order",
+        "extracted_order_fields": null,
+        "missing_order_fields": null,
+        "intents": [],
+        "product_association": {
+          "status": "clarification_needed",
+          "product_id": null,
+          "clarification_question": "Could you share the product name or post link so I can verify the request?"
+        },
+        "prediction": {
+          "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+          "is_lead": false,
+          "intent_labels": [],
+          "product_id": null,
+          "action": "ask_for_clarifying_product_details",
+          "escalation": true,
+          "lead_creation": false,
+          "provisional_order": false,
+          "order_fields": null
+        }
+      },
+      "tool_events": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "facebook",
+            "postId": "fb-post-001"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:facebook:fb-post-001",
+            "product:UG-PRD-101"
+          ],
+          "duration_ms": 1,
+          "call_id": "call_b0q68GBlHn2TsloX1DdCTjVg"
+        },
+        {
+          "tool_name": "getProduct",
+          "sanitized_args": {
+            "productId": "UG-PRD-101"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-101"
+          ],
+          "duration_ms": 0,
+          "call_id": "call_PjRcqSBGinsNwsml6PhvX2hP"
+        },
+        {
+          "tool_name": "getNegotiationPolicy",
+          "sanitized_args": {
+            "productId": "UG-PRD-101",
+            "quantity": null
+          },
+          "outcome": "invalid",
+          "evidence_refs": [],
+          "duration_ms": 0,
+          "error_category": "Error",
+          "call_id": "call_4Z3XVySbjysxPkFNJIUXWD0C"
+        }
+      ],
+      "turns": [
+        {
+          "turn_index": 1,
+          "response_id": "resp_038f4318a8c47b77016a9311a834a087d28219e9917dce240c",
+          "model": "gpt-5.6-luna",
+          "output_text": null,
+          "tool_calls": [
+            {
+              "call_id": "call_b0q68GBlHn2TsloX1DdCTjVg",
+              "name": "findProductByPost",
+              "arguments": {
+                "channel": "facebook",
+                "postId": "fb-post-001"
+              }
+            }
+          ],
+          "validation": [],
+          "usage": {
+            "input_tokens": 2302,
+            "cached_input_tokens": 0,
+            "output_tokens": 66,
+            "reasoning_tokens": 36,
+            "total_tokens": 2368
+          },
+          "latency_ms": 6107,
+          "retries": 0
+        },
+        {
+          "turn_index": 2,
+          "response_id": "resp_0f5f53abb4fb45b8016a9311abd19087d2b2d939a50b5b516f",
+          "model": "gpt-5.6-luna",
+          "output_text": null,
+          "tool_calls": [
+            {
+              "call_id": "call_PjRcqSBGinsNwsml6PhvX2hP",
+              "name": "getProduct",
+              "arguments": {
+                "productId": "UG-PRD-101"
+              }
+            }
+          ],
+          "validation": [],
+          "usage": {
+            "input_tokens": 2540,
+            "cached_input_tokens": 2143,
+            "output_tokens": 46,
+            "reasoning_tokens": 20,
+            "total_tokens": 2586
+          },
+          "latency_ms": 2441,
+          "retries": 0
+        },
+        {
+          "turn_index": 3,
+          "response_id": "resp_0dbfb3d7628c87ae016a9311ae52a487d29f8fa00e92417c08",
+          "model": "gpt-5.6-luna",
+          "output_text": null,
+          "tool_calls": [
+            {
+              "call_id": "call_4Z3XVySbjysxPkFNJIUXWD0C",
+              "name": "getNegotiationPolicy",
+              "arguments": {
+                "productId": "UG-PRD-101",
+                "quantity": null
+              }
+            }
+          ],
+          "validation": [],
+          "usage": {
+            "input_tokens": 2747,
+            "cached_input_tokens": 2143,
+            "output_tokens": 74,
+            "reasoning_tokens": 42,
+            "total_tokens": 2821
+          },
+          "latency_ms": 3394,
+          "retries": 0
+        },
+        {
+          "turn_index": 4,
+          "response_id": "resp_0d338e157bd06a1c016a9311b1b37c87d2a1c21b37386f774b",
+          "model": "gpt-5.6-luna",
+          "output_text": "{\"response_draft\":\"Thanks for your interest in the blue 1.5L water bottle. I’m unable to verify the current price from the available product information. A team member will confirm the price for you.\",\"approval_required\":true,\"approval_queue\":\"specialized\",\"escalation_required\":true,\"escalation_reason\":\"Current product price could not be verified because the pricing-policy lookup was invalid and no listed price is available in the product record.\",\"evidence_refs\":[\"post:facebook:fb-post-001\",\"product:UG-PRD-101\"],\"confidence\":\"medium\",\"lead_decision\":\"do_not_create_lead\",\"provisional_order_decision\":\"do_not_prepare_provisional_order\",\"extracted_order_fields\":null,\"missing_order_fields\":null,\"intents\":[\"pricing_request\"],\"product_association\":{\"status\":\"associated\",\"product_id\":\"UG-PRD-101\",\"clarification_question\":null},\"prediction\":{\"response_text\":\"Thanks for your interest in the blue 1.5L water bottle. I’m unable to verify the current price from the available product information. A team member will confirm the price for you.\",\"is_lead\":false,\"intent_labels\":[\"pricing_request\"],\"product_id\":\"UG-PRD-101\",\"action\":\"reply_with_verified_price\",\"escalation\":true,\"lead_creation\":false,\"provisional_order\":false,\"order_fields\":null}}",
+          "tool_calls": [],
+          "validation": [
+            {
+              "kind": "structured_output_validation",
+              "passed": false,
+              "detail": "price claims require product-price evidence"
+            }
+          ],
+          "usage": {
+            "input_tokens": 2846,
+            "cached_input_tokens": 2143,
+            "output_tokens": 349,
+            "reasoning_tokens": 53,
+            "total_tokens": 3195
+          },
+          "latency_ms": 4175,
+          "retries": 0
+        },
+        {
+          "turn_index": 5,
+          "response_id": "resp_00d1eec886d13a37016a9311b5d7cc87d29a1d24bd0fc68db3",
+          "model": "gpt-5.6-luna",
+          "output_text": "{\"response_draft\":\"Thanks for your interest in the blue 1.5L water bottle. I’m unable to verify the current price from the available information, so I’ll have a team member confirm it for you.\",\"approval_required\":true,\"approval_queue\":\"specialized\",\"escalation_required\":true,\"escalation_reason\":\"Current product-price evidence is unavailable; the pricing lookup could not be completed.\",\"evidence_refs\":[\"post:facebook:fb-post-001\",\"product:UG-PRD-101\"],\"confidence\":\"high\",\"lead_decision\":\"do_not_create_lead\",\"provisional_order_decision\":\"do_not_prepare_provisional_order\",\"extracted_order_fields\":null,\"missing_order_fields\":null,\"intents\":[\"pricing_request\"],\"product_association\":{\"status\":\"associated\",\"product_id\":\"UG-PRD-101\",\"clarification_question\":null},\"prediction\":{\"response_text\":\"Thanks for your interest in the blue 1.5L water bottle. I’m unable to verify the current price from the available information, so I’ll have a team member confirm it for you.\",\"is_lead\":false,\"intent_labels\":[\"pricing_request\"],\"product_id\":\"UG-PRD-101\",\"action\":\"reply_with_verified_price\",\"escalation\":true,\"lead_creation\":false,\"provisional_order\":false,\"order_fields\":null}}",
+          "tool_calls": [],
+          "validation": [
+            {
+              "kind": "repair_attempt",
+              "passed": true,
+              "detail": "Repair attempted"
+            },
+            {
+              "kind": "structured_output_validation",
+              "passed": false,
+              "detail": "price claims require product-price evidence"
+            }
+          ],
+          "usage": {
+            "input_tokens": 2235,
+            "cached_input_tokens": 0,
+            "output_tokens": 490,
+            "reasoning_tokens": 202,
+            "total_tokens": 2725
+          },
+          "latency_ms": 7093,
+          "retries": 0
+        }
+      ],
+      "approval_required": true,
+      "approval_queue": "specialized",
+      "escalation_required": true,
+      "escalation_reason": "price claims require product-price evidence",
+      "total_tool_calls": 3,
+      "total_model_turns": 5,
+      "validation_failures": [
+        "price claims require product-price evidence",
+        "price claims require product-price evidence"
+      ],
+      "retries": 0,
+      "runtime_ms": 23241,
+      "api_cost_usd": 0.0026067800000000004,
+      "usage": {
+        "input_tokens": 12670,
+        "cached_input_tokens": 6429,
+        "output_tokens": 1025,
+        "reasoning_tokens": 353,
+        "total_tokens": 13695
+      },
+      "usage_source": "api",
+      "safety_violations": [],
+      "evidence_refs": [],
+      "trace_path": "traces\\runtime-agent\\model-driven\\live\\luna-v2\\LB-001.md"
+    },
+    {
+      "case_id": "LB-002",
+      "pass": false,
+      "failed_dimensions": [
+        "lead_non_lead_decision",
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation",
+        "lead_creation_decision"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": false,
+        "intent_labels": [],
+        "product_id": null,
+        "action": "ask_for_clarifying_product_details",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "availability_question"
+        ],
+        "product_id": "UG-PRD-102",
+        "action": "verify_stock_before_replying",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "prompt_version": "sales-agent-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "low",
+      "final_output": {
+        "response_draft": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "approval_required": true,
+        "approval_queue": "specialized",
+        "escalation_required": true,
+        "escalation_reason": "delivery claims require delivery evidence",
+        "evidence_refs": [],
+        "confidence": "low",
+        "lead_decision": "do_not_create_lead",
+        "provisional_order_decision": "do_not_prepare_provisional_order",
+        "extracted_order_fields": null,
+        "missing_order_fields": null,
+        "intents": [],
+        "product_association": {
+          "status": "clarification_needed",
+          "product_id": null,
+          "clarification_question": "Could you share the product name or post link so I can verify the request?"
+        },
+        "prediction": {
+          "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+          "is_lead": false,
+          "intent_labels": [],
+          "product_id": null,
+          "action": "ask_for_clarifying_product_details",
+          "escalation": true,
+          "lead_creation": false,
+          "provisional_order": false,
+          "order_fields": null
+        }
+      },
+      "tool_events": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "instagram",
+            "postId": "ig-post-002"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:instagram:ig-post-002",
+            "product:UG-PRD-102"
+          ],
+          "duration_ms": 0,
+          "call_id": "call_bolZmvPYNEaCrSUhGgZvTrIV"
+        },
+        {
+          "tool_name": "checkInventory",
+          "sanitized_args": {
+            "productId": "UG-PRD-102"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-102#standard-s2"
+          ],
+          "duration_ms": 0,
+          "call_id": "call_qcnrrQCTmM7Yo9ITBHefiS8g"
+        },
+        {
+          "tool_name": "getDeliveryOptions",
+          "sanitized_args": {
+            "destination": "Mukono"
+          },
+          "outcome": "unavailable",
+          "evidence_refs": [],
+          "duration_ms": 0,
+          "call_id": "call_t0XunBE2ckNt0ZBbv4ekqMat"
+        }
+      ],
+      "turns": [
+        {
+          "turn_index": 1,
+          "response_id": "resp_02b4cb57160a1e8a016a9311bcf61887d296eec4b20487bb9c",
+          "model": "gpt-5.6-luna",
+          "output_text": null,
+          "tool_calls": [
+            {
+              "call_id": "call_bolZmvPYNEaCrSUhGgZvTrIV",
+              "name": "findProductByPost",
+              "arguments": {
+                "channel": "instagram",
+                "postId": "ig-post-002"
+              }
+            }
+          ],
+          "validation": [],
+          "usage": {
+            "input_tokens": 2299,
+            "cached_input_tokens": 2143,
+            "output_tokens": 47,
+            "reasoning_tokens": 17,
+            "total_tokens": 2346
+          },
+          "latency_ms": 2281,
+          "retries": 0
+        },
+        {
+          "turn_index": 2,
+          "response_id": "resp_060c00eca12a1e30016a9311bf493c87d2ac1bc0e932dd2f62",
+          "model": "gpt-5.6-luna",
+          "output_text": null,
+          "tool_calls": [
+            {
+              "call_id": "call_qcnrrQCTmM7Yo9ITBHefiS8g",
+              "name": "checkInventory",
+              "arguments": {
+                "productId": "UG-PRD-102",
+                "requestedVariant": null
+              }
+            },
+            {
+              "call_id": "call_t0XunBE2ckNt0ZBbv4ekqMat",
+              "name": "getDeliveryOptions",
+              "arguments": {
+                "destination": "Mukono"
+              }
+            }
+          ],
+          "validation": [],
+          "usage": {
+            "input_tokens": 2529,
+            "cached_input_tokens": 2143,
+            "output_tokens": 77,
+            "reasoning_tokens": 14,
+            "total_tokens": 2606
+          },
+          "latency_ms": 2195,
+          "retries": 0
+        },
+        {
+          "turn_index": 3,
+          "response_id": "resp_06fa5a7bd8fac1c7016a9311c187d087d28d2082bb470ff01f",
+          "model": "gpt-5.6-luna",
+          "output_text": "{\"response_draft\":\"The Solar lantern S2 is currently in stock, with 16 units available. I’m unable to verify delivery options for Mukono right now—would you like us to confirm delivery availability for you?\",\"approval_required\":true,\"approval_queue\":\"specialized\",\"escalation_required\":true,\"escalation_reason\":\"Delivery availability for Mukono could not be verified.\",\"evidence_refs\":[\"post:instagram:ig-post-002\",\"product:UG-PRD-102\",\"product:UG-PRD-102#standard-s2\"],\"confidence\":\"medium\",\"lead_decision\":\"create_lead\",\"provisional_order_decision\":\"do_not_prepare_provisional_order\",\"extracted_order_fields\":null,\"missing_order_fields\":null,\"intents\":[\"availability_question\",\"delivery_question\"],\"product_association\":{\"status\":\"associated\",\"product_id\":\"UG-PRD-102\",\"clarification_question\":null},\"prediction\":{\"response_text\":\"The Solar lantern S2 is currently in stock, with 16 units available. I’m unable to verify delivery options for Mukono right now—would you like us to confirm delivery availability for you?\",\"is_lead\":true,\"intent_labels\":[\"availability_question\",\"delivery_question\"],\"product_id\":\"UG-PRD-102\",\"action\":\"verify_delivery_terms_before_replying\",\"escalation\":true,\"lead_creation\":true,\"provisional_order\":false,\"order_fields\":null}}",
+          "tool_calls": [],
+          "validation": [
+            {
+              "kind": "structured_output_validation",
+              "passed": false,
+              "detail": "delivery claims require delivery evidence"
+            }
+          ],
+          "usage": {
+            "input_tokens": 2817,
+            "cached_input_tokens": 2143,
+            "output_tokens": 478,
+            "reasoning_tokens": 174,
+            "total_tokens": 3295
+          },
+          "latency_ms": 7127,
+          "retries": 0
+        },
+        {
+          "turn_index": 4,
+          "response_id": "resp_01dee8ad16496e00016a9311c87e5487d2afa2c5f0db962c49",
+          "model": "gpt-5.6-luna",
+          "output_text": "{\"response_draft\":\"The Solar lantern S2 is currently in stock, with 16 units available. I’m unable to verify delivery availability to Mukono at the moment—would you like us to confirm the delivery option for you?\",\"approval_required\":true,\"approval_queue\":\"specialized\",\"escalation_required\":true,\"escalation_reason\":\"Delivery availability for Mukono could not be verified because the delivery-options check was unavailable.\",\"evidence_refs\":[\"product:UG-PRD-102\",\"product:UG-PRD-102#standard-s2\"],\"confidence\":\"high\",\"lead_decision\":\"do_not_create_lead\",\"provisional_order_decision\":\"do_not_prepare_provisional_order\",\"extracted_order_fields\":null,\"missing_order_fields\":null,\"intents\":[\"availability_question\",\"delivery_question\"],\"product_association\":{\"status\":\"associated\",\"product_id\":\"UG-PRD-102\",\"clarification_question\":null},\"prediction\":{\"response_text\":\"The Solar lantern S2 is currently in stock, with 16 units available. I’m unable to verify delivery availability to Mukono at the moment—would you like us to confirm the delivery option for you?\",\"is_lead\":false,\"intent_labels\":[\"availability_question\",\"delivery_question\"],\"product_id\":\"UG-PRD-102\",\"action\":\"verify_delivery_terms_before_replying\",\"escalation\":true,\"lead_creation\":false,\"provisional_order\":false,\"order_fields\":null}}",
+          "tool_calls": [],
+          "validation": [
+            {
+              "kind": "repair_attempt",
+              "passed": true,
+              "detail": "Repair attempted"
+            },
+            {
+              "kind": "structured_output_validation",
+              "passed": false,
+              "detail": "delivery claims require delivery evidence"
+            }
+          ],
+          "usage": {
+            "input_tokens": 2205,
+            "cached_input_tokens": 1521,
+            "output_tokens": 477,
+            "reasoning_tokens": 169,
+            "total_tokens": 2682
+          },
+          "latency_ms": 6240,
+          "retries": 0
+        }
+      ],
+      "approval_required": true,
+      "approval_queue": "specialized",
+      "escalation_required": true,
+      "escalation_reason": "delivery claims require delivery evidence",
+      "total_tool_calls": 3,
+      "total_model_turns": 4,
+      "validation_failures": [
+        "delivery claims require delivery evidence",
+        "delivery claims require delivery evidence"
+      ],
+      "retries": 0,
+      "runtime_ms": 17846,
+      "api_cost_usd": 0.0018338,
+      "usage": {
+        "input_tokens": 9850,
+        "cached_input_tokens": 7950,
+        "output_tokens": 1079,
+        "reasoning_tokens": 374,
+        "total_tokens": 10929
+      },
+      "usage_source": "api",
+      "safety_violations": [],
+      "evidence_refs": [],
+      "trace_path": "traces\\runtime-agent\\model-driven\\live\\luna-v2\\LB-002.md"
+    },
+    {
+      "case_id": "LB-003",
+      "pass": false,
+      "failed_dimensions": [
+        "lead_non_lead_decision",
+        "lead_creation_decision"
+      ],
+      "prediction": {
+        "response_text": "Here are clear photos of the navy B-300 backpack from the post:\n- Front: synthetic://images/ug-prd-103/front.png\n- Back: synthetic://images/ug-prd-103/back.png",
+        "is_lead": false,
+        "intent_labels": [
+          "product_image_request"
+        ],
+        "product_id": "UG-PRD-103",
+        "action": "share_verified_product_image",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "product_image_request"
+        ],
+        "product_id": "UG-PRD-103",
+        "action": "share_verified_product_image",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "prompt_version": "sales-agent-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "low",
+      "final_output": {
+        "response_draft": "Here are clear photos of the navy B-300 backpack from the post:\n- Front: synthetic://images/ug-prd-103/front.png\n- Back: synthetic://images/ug-prd-103/back.png",
+        "approval_required": true,
+        "approval_queue": "normal",
+        "escalation_required": false,
+        "escalation_reason": null,
+        "evidence_refs": [
+          "post:tiktok:tt-post-003",
+          "product:UG-PRD-103"
+        ],
+        "confidence": "high",
+        "lead_decision": "do_not_create_lead",
+        "provisional_order_decision": "do_not_prepare_provisional_order",
+        "extracted_order_fields": null,
+        "missing_order_fields": null,
+        "intents": [
+          "product_image_request"
+        ],
+        "product_association": {
+          "status": "associated",
+          "product_id": "UG-PRD-103",
+          "clarification_question": null
+        },
+        "prediction": {
+          "response_text": "Here are clear photos of the navy B-300 backpack from the post:\n- Front: synthetic://images/ug-prd-103/front.png\n- Back: synthetic://images/ug-prd-103/back.png",
+          "is_lead": false,
+          "intent_labels": [
+            "product_image_request"
+          ],
+          "product_id": "UG-PRD-103",
+          "action": "share_verified_product_image",
+          "escalation": false,
+          "lead_creation": false,
+          "provisional_order": false,
+          "order_fields": null
+        }
+      },
+      "tool_events": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "tiktok",
+            "postId": "tt-post-003"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:tiktok:tt-post-003",
+            "product:UG-PRD-103"
+          ],
+          "duration_ms": 0,
+          "call_id": "call_hjfqz8LtZmnu6oztwG1l33ZP"
+        },
+        {
+          "tool_name": "getProductImages",
+          "sanitized_args": {
+            "productId": "UG-PRD-103"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-103"
+          ],
+          "duration_ms": 0,
+          "call_id": "call_idXVVoZy1gC3maTiNHqgwFmL"
+        }
+      ],
+      "turns": [
+        {
+          "turn_index": 1,
+          "response_id": "resp_02c9567fd8b4e92b016a9311ceea9887d29e24f2788a6eade2",
+          "model": "gpt-5.6-luna",
+          "output_text": null,
+          "tool_calls": [
+            {
+              "call_id": "call_hjfqz8LtZmnu6oztwG1l33ZP",
+              "name": "findProductByPost",
+              "arguments": {
+                "channel": "tiktok",
+                "postId": "tt-post-003"
+              }
+            }
+          ],
+          "validation": [],
+          "usage": {
+            "input_tokens": 2300,
+            "cached_input_tokens": 2143,
+            "output_tokens": 46,
+            "reasoning_tokens": 15,
+            "total_tokens": 2346
+          },
+          "latency_ms": 3397,
+          "retries": 0
+        },
+        {
+          "turn_index": 2,
+          "response_id": "resp_027638ae21fa9a6f016a9311d22cb487d2814ca9316870b29c",
+          "model": "gpt-5.6-luna",
+          "output_text": null,
+          "tool_calls": [
+            {
+              "call_id": "call_idXVVoZy1gC3maTiNHqgwFmL",
+              "name": "getProductImages",
+              "arguments": {
+                "productId": "UG-PRD-103"
+              }
+            }
+          ],
+          "validation": [],
+          "usage": {
+            "input_tokens": 2535,
+            "cached_input_tokens": 2143,
+            "output_tokens": 45,
+            "reasoning_tokens": 18,
+            "total_tokens": 2580
+          },
+          "latency_ms": 2531,
+          "retries": 0
+        },
+        {
+          "turn_index": 3,
+          "response_id": "resp_0c82846964e08a6a016a9311d4b07487d2838f3455943acd53",
+          "model": "gpt-5.6-luna",
+          "output_text": "{\"response_draft\":\"Here are clear photos of the navy B-300 backpack from the post:\\n- Front: synthetic://images/ug-prd-103/front.png\\n- Back: synthetic://images/ug-prd-103/back.png\",\"approval_required\":true,\"approval_queue\":\"normal\",\"escalation_required\":false,\"escalation_reason\":null,\"evidence_refs\":[\"post:tiktok:tt-post-003\",\"product:UG-PRD-103\"],\"confidence\":\"high\",\"lead_decision\":\"do_not_create_lead\",\"provisional_order_decision\":\"do_not_prepare_provisional_order\",\"extracted_order_fields\":null,\"missing_order_fields\":null,\"intents\":[\"product_image_request\"],\"product_association\":{\"status\":\"associated\",\"product_id\":\"UG-PRD-103\",\"clarification_question\":null},\"prediction\":{\"response_text\":\"Here are clear photos of the navy B-300 backpack from the post:\\n- Front: synthetic://images/ug-prd-103/front.png\\n- Back: synthetic://images/ug-prd-103/back.png\",\"is_lead\":false,\"intent_labels\":[\"product_image_request\"],\"product_id\":\"UG-PRD-103\",\"action\":\"share_verified_product_image\",\"escalation\":false,\"lead_creation\":false,\"provisional_order\":false,\"order_fields\":null}}",
+          "tool_calls": [],
+          "validation": [
+            {
+              "kind": "structured_output_validation",
+              "passed": true,
+              "detail": "Validated structured output"
+            }
+          ],
+          "usage": {
+            "input_tokens": 2725,
+            "cached_input_tokens": 2143,
+            "output_tokens": 338,
+            "reasoning_tokens": 50,
+            "total_tokens": 3063
+          },
+          "latency_ms": 3528,
+          "retries": 0
+        }
+      ],
+      "approval_required": true,
+      "approval_queue": "normal",
+      "escalation_required": false,
+      "escalation_reason": null,
+      "total_tool_calls": 2,
+      "total_model_turns": 3,
+      "validation_failures": [],
+      "retries": 0,
+      "runtime_ms": 9458,
+      "api_cost_usd": 0.00086958,
+      "usage": {
+        "input_tokens": 7560,
+        "cached_input_tokens": 6429,
+        "output_tokens": 429,
+        "reasoning_tokens": 83,
+        "total_tokens": 7989
+      },
+      "usage_source": "api",
+      "safety_violations": [],
+      "evidence_refs": [
+        "post:tiktok:tt-post-003",
+        "product:UG-PRD-103"
+      ],
+      "trace_path": "traces\\runtime-agent\\model-driven\\live\\luna-v2\\LB-003.md"
+    },
+    {
+      "case_id": "LB-004",
+      "pass": false,
+      "failed_dimensions": [
+        "lead_non_lead_decision",
+        "product_association_or_clarification",
+        "lead_creation_decision"
+      ],
+      "prediction": {
+        "response_text": "We’re based at a customer desk in central Kampala, near a public transport corridor. It isn’t a private address. We’re open Monday–Friday from 08:00–18:00 and Saturday from 09:00–15:00; closed Sundays.",
+        "is_lead": false,
+        "intent_labels": [
+          "business_location_question"
+        ],
+        "product_id": null,
+        "action": "provide_verified_business_location",
+        "escalation": false,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "business_location_question"
+        ],
+        "product_id": "UG-PRD-102",
+        "action": "provide_verified_business_location",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "prompt_version": "sales-agent-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "low",
+      "final_output": {
+        "response_draft": "We’re based at a customer desk in central Kampala, near a public transport corridor. It isn’t a private address. We’re open Monday–Friday from 08:00–18:00 and Saturday from 09:00–15:00; closed Sundays.",
+        "approval_required": true,
+        "approval_queue": "normal",
+        "escalation_required": false,
+        "escalation_reason": null,
+        "evidence_refs": [
+          "business:SB-001"
+        ],
+        "confidence": "high",
+        "lead_decision": "do_not_create_lead",
+        "provisional_order_decision": "do_not_prepare_provisional_order",
+        "extracted_order_fields": null,
+        "missing_order_fields": null,
+        "intents": [
+          "business_location_question"
+        ],
+        "product_association": {
+          "status": "clarification_needed",
+          "product_id": null,
+          "clarification_question": null
+        },
+        "prediction": {
+          "response_text": "We’re based at a customer desk in central Kampala, near a public transport corridor. It isn’t a private address. We’re open Monday–Friday from 08:00–18:00 and Saturday from 09:00–15:00; closed Sundays.",
+          "is_lead": false,
+          "intent_labels": [
+            "business_location_question"
+          ],
+          "product_id": null,
+          "action": "provide_verified_business_location",
+          "escalation": false,
+          "lead_creation": false,
+          "provisional_order": false,
+          "order_fields": null
+        }
+      },
+      "tool_events": [
+        {
+          "tool_name": "getBusinessLocation",
+          "sanitized_args": {},
+          "outcome": "found",
+          "evidence_refs": [
+            "business:SB-001"
+          ],
+          "duration_ms": 0,
+          "call_id": "call_40rfaHvmz9cMwLI0d6b22AB3"
+        }
+      ],
+      "turns": [
+        {
+          "turn_index": 1,
+          "response_id": "resp_0cfaec070cb19628016a9311d838dc87d2893ba5deb8041e08",
+          "model": "gpt-5.6-luna",
+          "output_text": null,
+          "tool_calls": [
+            {
+              "call_id": "call_40rfaHvmz9cMwLI0d6b22AB3",
+              "name": "getBusinessLocation",
+              "arguments": {}
+            }
+          ],
+          "validation": [],
+          "usage": {
+            "input_tokens": 2293,
+            "cached_input_tokens": 2143,
+            "output_tokens": 26,
+            "reasoning_tokens": 9,
+            "total_tokens": 2319
+          },
+          "latency_ms": 2025,
+          "retries": 0
+        },
+        {
+          "turn_index": 2,
+          "response_id": "resp_093b93d5ce298feb016a9311da402887d297c40d7cf970ca97",
+          "model": "gpt-5.6-luna",
+          "output_text": "{\"response_draft\":\"We’re based at a customer desk in central Kampala, near a public transport corridor. It is not a private address. Pickup hours are Monday–Friday, 08:00–18:00, and Saturday, 09:00–15:00; we’re closed Sunday. A human team member can assist with pickup coordination through the review queue.\",\"approval_required\":true,\"approval_queue\":\"normal\",\"escalation_required\":false,\"escalation_reason\":null,\"evidence_refs\":[\"business:SB-001\"],\"confidence\":\"high\",\"lead_decision\":\"do_not_create_lead\",\"provisional_order_decision\":\"do_not_prepare_provisional_order\",\"extracted_order_fields\":null,\"missing_order_fields\":null,\"intents\":[\"business_location_question\"],\"product_association\":{\"status\":\"associated\",\"product_id\":null,\"clarification_question\":null},\"prediction\":{\"response_text\":\"We’re based at a customer desk in central Kampala, near a public transport corridor. It is not a private address. Pickup hours are Monday–Friday, 08:00–18:00, and Saturday, 09:00–15:00; we’re closed Sunday. A human team member can assist with pickup coordination through the review queue.\",\"is_lead\":false,\"intent_labels\":[\"business_location_question\"],\"product_id\":null,\"action\":\"provide_verified_business_location\",\"escalation\":false,\"lead_creation\":false,\"provisional_order\":false,\"order_fields\":null}}",
+          "tool_calls": [],
+          "validation": [
+            {
+              "kind": "structured_output_validation",
+              "passed": false,
+              "detail": "associated product state requires a product_id"
+            }
+          ],
+          "usage": {
+            "input_tokens": 2575,
+            "cached_input_tokens": 2143,
+            "output_tokens": 396,
+            "reasoning_tokens": 80,
+            "total_tokens": 2971
+          },
+          "latency_ms": 6423,
+          "retries": 0
+        },
+        {
+          "turn_index": 3,
+          "response_id": "resp_08034561d80ea266016a9311e0b1a087d28349665d57e2b34f",
+          "model": "gpt-5.6-luna",
+          "output_text": "{\"response_draft\":\"We’re based at a customer desk in central Kampala, near a public transport corridor. It isn’t a private address. We’re open Monday–Friday from 08:00–18:00 and Saturday from 09:00–15:00; closed Sundays.\",\"approval_required\":true,\"approval_queue\":\"normal\",\"escalation_required\":false,\"escalation_reason\":null,\"evidence_refs\":[\"business:SB-001\"],\"confidence\":\"high\",\"lead_decision\":\"do_not_create_lead\",\"provisional_order_decision\":\"do_not_prepare_provisional_order\",\"extracted_order_fields\":null,\"missing_order_fields\":null,\"intents\":[\"business_location_question\"],\"product_association\":{\"status\":\"clarification_needed\",\"product_id\":null,\"clarification_question\":null},\"prediction\":{\"response_text\":\"We’re based at a customer desk in central Kampala, near a public transport corridor. It isn’t a private address. We’re open Monday–Friday from 08:00–18:00 and Saturday from 09:00–15:00; closed Sundays.\",\"is_lead\":false,\"intent_labels\":[\"business_location_question\"],\"product_id\":null,\"action\":\"provide_verified_business_location\",\"escalation\":false,\"lead_creation\":false,\"provisional_order\":false,\"order_fields\":null}}",
+          "tool_calls": [],
+          "validation": [
+            {
+              "kind": "repair_attempt",
+              "passed": true,
+              "detail": "Repair attempt succeeded"
+            },
+            {
+              "kind": "structured_output_validation",
+              "passed": true,
+              "detail": "Validated repaired output"
+            }
+          ],
+          "usage": {
+            "input_tokens": 1965,
+            "cached_input_tokens": 1521,
+            "output_tokens": 336,
+            "reasoning_tokens": 52,
+            "total_tokens": 2301
+          },
+          "latency_ms": 4036,
+          "retries": 0
+        }
+      ],
+      "approval_required": true,
+      "approval_queue": "normal",
+      "escalation_required": false,
+      "escalation_reason": null,
+      "total_tool_calls": 1,
+      "total_model_turns": 3,
+      "validation_failures": [
+        "associated product state requires a product_id"
+      ],
+      "retries": 0,
+      "runtime_ms": 12487,
+      "api_cost_usd": 0.00123094,
+      "usage": {
+        "input_tokens": 6833,
+        "cached_input_tokens": 5807,
+        "output_tokens": 758,
+        "reasoning_tokens": 141,
+        "total_tokens": 7591
+      },
+      "usage_source": "api",
+      "safety_violations": [],
+      "evidence_refs": [
+        "business:SB-001"
+      ],
+      "trace_path": "traces\\runtime-agent\\model-driven\\live\\luna-v2\\LB-004.md"
+    },
+    {
+      "case_id": "LB-005",
+      "pass": false,
+      "failed_dimensions": [
+        "lead_non_lead_decision",
+        "intent_labels",
+        "product_association_or_clarification",
+        "correct_action_escalation",
+        "lead_creation_decision"
+      ],
+      "prediction": {
+        "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "is_lead": false,
+        "intent_labels": [],
+        "product_id": null,
+        "action": "ask_for_clarifying_product_details",
+        "escalation": true,
+        "lead_creation": false,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "expected": {
+        "is_lead": true,
+        "intent_labels": [
+          "delivery_question"
+        ],
+        "product_id": "UG-PRD-101",
+        "action": "verify_delivery_terms_before_replying",
+        "escalation": false,
+        "lead_creation": true,
+        "provisional_order": false,
+        "order_fields": null
+      },
+      "prompt_version": "sales-agent-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "low",
+      "final_output": {
+        "response_draft": "Thanks for reaching out. This needs human review before a reply is sent.",
+        "approval_required": true,
+        "approval_queue": "specialized",
+        "escalation_required": true,
+        "escalation_reason": "delivery claims require delivery evidence",
+        "evidence_refs": [],
+        "confidence": "low",
+        "lead_decision": "do_not_create_lead",
+        "provisional_order_decision": "do_not_prepare_provisional_order",
+        "extracted_order_fields": null,
+        "missing_order_fields": null,
+        "intents": [],
+        "product_association": {
+          "status": "clarification_needed",
+          "product_id": null,
+          "clarification_question": "Could you share the product name or post link so I can verify the request?"
+        },
+        "prediction": {
+          "response_text": "Thanks for reaching out. This needs human review before a reply is sent.",
+          "is_lead": false,
+          "intent_labels": [],
+          "product_id": null,
+          "action": "ask_for_clarifying_product_details",
+          "escalation": true,
+          "lead_creation": false,
+          "provisional_order": false,
+          "order_fields": null
+        }
+      },
+      "tool_events": [
+        {
+          "tool_name": "findProductByPost",
+          "sanitized_args": {
+            "channel": "facebook",
+            "postId": "fb-post-005"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "post:facebook:fb-post-005",
+            "product:UG-PRD-101"
+          ],
+          "duration_ms": 0,
+          "call_id": "call_XzhGrl88cWrJAHS095dKqaYX"
+        },
+        {
+          "tool_name": "checkInventory",
+          "sanitized_args": {
+            "productId": "UG-PRD-101",
+            "requestedVariant": "blue"
+          },
+          "outcome": "found",
+          "evidence_refs": [
+            "product:UG-PRD-101#standard-blue-1.5l"
+          ],
+          "duration_ms": 0,
+          "call_id": "call_pQh2CWzkyrMsChpHwOqy2p6U"
+        },
+        {
+          "tool_name": "getDeliveryOptions",
+          "sanitized_args": {
+            "destination": "Mukono"
+          },
+          "outcome": "unavailable",
+          "evidence_refs": [],
+          "duration_ms": 0,
+          "call_id": "call_rhKj9mbGifNGiwNHxgdy3kQa"
+        }
+      ],
+      "turns": [
+        {
+          "turn_index": 1,
+          "response_id": "resp_0b9c590435f24171016a9311e4afc487d2a26f61a477030175",
+          "model": "gpt-5.6-luna",
+          "output_text": null,
+          "tool_calls": [
+            {
+              "call_id": "call_XzhGrl88cWrJAHS095dKqaYX",
+              "name": "findProductByPost",
+              "arguments": {
+                "channel": "facebook",
+                "postId": "fb-post-005"
+              }
+            }
+          ],
+          "validation": [],
+          "usage": {
+            "input_tokens": 2305,
+            "cached_input_tokens": 2143,
+            "output_tokens": 76,
+            "reasoning_tokens": 46,
+            "total_tokens": 2381
+          },
+          "latency_ms": 2252,
+          "retries": 0
+        },
+        {
+          "turn_index": 2,
+          "response_id": "resp_0d2c202851c89a38016a9311e7128487d2b45f422e9f301198",
+          "model": "gpt-5.6-luna",
+          "output_text": null,
+          "tool_calls": [
+            {
+              "call_id": "call_pQh2CWzkyrMsChpHwOqy2p6U",
+              "name": "checkInventory",
+              "arguments": {
+                "productId": "UG-PRD-101",
+                "requestedVariant": "blue"
+              }
+            },
+            {
+              "call_id": "call_rhKj9mbGifNGiwNHxgdy3kQa",
+              "name": "getDeliveryOptions",
+              "arguments": {
+                "destination": "Mukono"
+              }
+            }
+          ],
+          "validation": [],
+          "usage": {
+            "input_tokens": 2539,
+            "cached_input_tokens": 2143,
+            "output_tokens": 104,
+            "reasoning_tokens": 41,
+            "total_tokens": 2643
+          },
+          "latency_ms": 2714,
+          "retries": 0
+        },
+        {
+          "turn_index": 3,
+          "response_id": "resp_075a87aa7da03bd7016a9311e9adac87d29bec5ddf3be2ec5f",
+          "model": "gpt-5.6-luna",
+          "output_text": "{\"response_draft\":\"The blue 1.5L water bottle is currently in stock. I’m unable to verify delivery availability to Mukono on Friday or the delivery cost at the moment. Could you confirm the exact Friday date so we can check the delivery terms?\",\"approval_required\":true,\"approval_queue\":\"specialized\",\"escalation_required\":true,\"escalation_reason\":\"Delivery availability and cost for Mukono could not be verified.\",\"evidence_refs\":[\"post:facebook:fb-post-005\",\"product:UG-PRD-101#standard-blue-1.5l\"],\"confidence\":\"medium\",\"lead_decision\":\"create_lead\",\"provisional_order_decision\":\"do_not_prepare_provisional_order\",\"extracted_order_fields\":null,\"missing_order_fields\":null,\"intents\":[\"availability_question\",\"delivery_constraint\",\"delivery_question\"],\"product_association\":{\"status\":\"associated\",\"product_id\":\"UG-PRD-101\",\"clarification_question\":null},\"prediction\":{\"response_text\":\"The blue 1.5L water bottle is currently in stock. I’m unable to verify delivery availability to Mukono on Friday or the delivery cost at the moment. Could you confirm the exact Friday date so we can check the delivery terms?\",\"is_lead\":true,\"intent_labels\":[\"availability_question\",\"delivery_constraint\",\"delivery_question\"],\"product_id\":\"UG-PRD-101\",\"action\":\"verify_delivery_terms_before_replying\",\"escalation\":true,\"lead_creation\":true,\"provisional_order\":false,\"order_fields\":null}}",
+          "tool_calls": [],
+          "validation": [
+            {
+              "kind": "structured_output_validation",
+              "passed": false,
+              "detail": "delivery claims require delivery evidence"
+            }
+          ],
+          "usage": {
+            "input_tokens": 2844,
+            "cached_input_tokens": 2143,
+            "output_tokens": 507,
+            "reasoning_tokens": 182,
+            "total_tokens": 3351
+          },
+          "latency_ms": 5350,
+          "retries": 0
+        },
+        {
+          "turn_index": 4,
+          "response_id": "resp_01cff564d3d8280a016a9311ef15a887d29cccf2f08bceed3e",
+          "model": "gpt-5.6-luna",
+          "output_text": "{\"response_draft\":\"The blue 1.5L water bottle is currently in stock. I’m unable to verify delivery availability to Mukono on Friday or the delivery cost right now. Could you please confirm whether you’d like us to check this with the delivery team?\",\"approval_required\":true,\"approval_queue\":\"specialized\",\"escalation_required\":true,\"escalation_reason\":\"Delivery availability and cost for Mukono on Friday could not be verified because the delivery-options lookup was unavailable.\",\"evidence_refs\":[\"post:facebook:fb-post-005\",\"product:UG-PRD-101\",\"product:UG-PRD-101#standard-blue-1.5l\"],\"confidence\":\"high\",\"lead_decision\":\"do_not_create_lead\",\"provisional_order_decision\":\"do_not_prepare_provisional_order\",\"extracted_order_fields\":null,\"missing_order_fields\":null,\"intents\":[\"availability_question\",\"delivery_constraint\",\"delivery_question\"],\"product_association\":{\"status\":\"associated\",\"product_id\":\"UG-PRD-101\",\"clarification_question\":null},\"prediction\":{\"response_text\":\"The blue 1.5L water bottle is currently in stock. I’m unable to verify delivery availability to Mukono on Friday or the delivery cost right now. Could you please confirm whether you’d like us to check this with the delivery team?\",\"is_lead\":false,\"intent_labels\":[\"availability_question\",\"delivery_constraint\",\"delivery_question\"],\"product_id\":\"UG-PRD-101\",\"action\":\"verify_delivery_terms_before_replying\",\"escalation\":true,\"lead_creation\":false,\"provisional_order\":false,\"order_fields\":null}}",
+          "tool_calls": [],
+          "validation": [
+            {
+              "kind": "repair_attempt",
+              "passed": true,
+              "detail": "Repair attempted"
+            },
+            {
+              "kind": "structured_output_validation",
+              "passed": false,
+              "detail": "delivery claims require delivery evidence"
+            }
+          ],
+          "usage": {
+            "input_tokens": 2232,
+            "cached_input_tokens": 1521,
+            "output_tokens": 404,
+            "reasoning_tokens": 57,
+            "total_tokens": 2636
+          },
+          "latency_ms": 5125,
+          "retries": 0
+        }
+      ],
+      "approval_required": true,
+      "approval_queue": "specialized",
+      "escalation_required": true,
+      "escalation_reason": "delivery claims require delivery evidence",
+      "total_tool_calls": 3,
+      "total_model_turns": 4,
+      "validation_failures": [
+        "delivery claims require delivery evidence",
+        "delivery claims require delivery evidence"
+      ],
+      "retries": 0,
+      "runtime_ms": 15443,
+      "api_cost_usd": 0.0018622,
+      "usage": {
+        "input_tokens": 9920,
+        "cached_input_tokens": 7950,
+        "output_tokens": 1091,
+        "reasoning_tokens": 326,
+        "total_tokens": 11011
+      },
+      "usage_source": "api",
+      "safety_violations": [],
+      "evidence_refs": [],
+      "trace_path": "traces\\runtime-agent\\model-driven\\live\\luna-v2\\LB-005.md"
+    }
+  ]
+}

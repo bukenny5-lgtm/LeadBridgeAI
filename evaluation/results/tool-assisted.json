@@ -1,6 +1,6 @@
 {
   "evaluation_version": "3.0.0",
-  "timestamp": "2026-08-29T10:45:26.372Z",
+  "timestamp": "2026-08-29T18:35:09.410Z",
   "baseline_reference": {
     "evaluation_file": "evaluation\\results\\baseline.json",
     "primary_score": 20,
@@ -41,7 +41,7 @@
     "passing_cases": 12,
     "failing_cases": 8
   },
-  "runtime_ms": 19,
+  "runtime_ms": 39,
   "model_api_cost_usd": 0,
   "environment_versions": {
     "node": "v24.15.0",
@@ -93,7 +93,7 @@
             "post:facebook:fb-post-001",
             "product:UG-PRD-101"
           ],
-          "duration_ms": 0
+          "duration_ms": 1
         },
         {
           "tool_name": "getProduct",
@@ -224,7 +224,7 @@
           "variant_request"
         ],
         "product_id": "UG-PRD-103",
-        "action": "ask_for_variant_confirmation",
+        "action": "ask_for_clarifying_product_details",
         "escalation": false,
         "lead_creation": true,
         "provisional_order": false,
@@ -328,7 +328,7 @@
             "product:UG-PRD-101",
             "product:UG-PRD-102"
           ],
-          "duration_ms": 1
+          "duration_ms": 2
         },
         {
           "tool_name": "getBusinessLocation",
@@ -362,7 +362,7 @@
           "variant_request"
         ],
         "product_id": "UG-PRD-101",
-        "action": "ask_for_variant_confirmation",
+        "action": "ask_for_clarifying_product_details",
         "escalation": false,
         "lead_creation": true,
         "provisional_order": false,
@@ -512,7 +512,7 @@
           "negotiation"
         ],
         "product_id": null,
-        "action": "counter_with_verified_price_or_route_to_review",
+        "action": "respond_with_verified_price_and_refuse_unsupported_claim",
         "escalation": false,
         "lead_creation": true,
         "provisional_order": false,
@@ -542,7 +542,7 @@
             "product:UG-PRD-103",
             "product:UG-PRD-104"
           ],
-          "duration_ms": 0
+          "duration_ms": 1
         }
       ],
       "evidence_refs": [
@@ -678,7 +678,7 @@
             "product:UG-PRD-103",
             "product:UG-PRD-106"
           ],
-          "duration_ms": 0
+          "duration_ms": 1
         }
       ],
       "evidence_refs": [
@@ -705,7 +705,7 @@
           "variant_request"
         ],
         "product_id": "UG-PRD-103",
-        "action": "ask_for_variant_confirmation",
+        "action": "ask_for_clarifying_product_details",
         "escalation": false,
         "lead_creation": true,
         "provisional_order": false,
@@ -823,7 +823,7 @@
             "product:UG-PRD-103",
             "product:UG-PRD-106"
           ],
-          "duration_ms": 0
+          "duration_ms": 1
         }
       ],
       "evidence_refs": [
@@ -1221,7 +1221,7 @@
             "product:UG-PRD-102",
             "product:UG-PRD-108"
           ],
-          "duration_ms": 0
+          "duration_ms": 1
         }
       ],
       "evidence_refs": [

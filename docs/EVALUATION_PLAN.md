@@ -42,6 +42,19 @@ Phase 3 added a verified-tool pass that reuses the same 20 runnable cases and th
 
 This run measures verified tools and synthetic context handling, not model reasoning or live integrations.
 
+## Hybrid policy result
+
+Phase 4 added a deterministic policy boundary around the model-driven agent. The hybrid mock run reuses the same 20 runnable cases and the same scorer, but it evaluates a model proposal that is then enforced by deterministic policy.
+
+The measured local result is:
+
+- 40.00% primary score
+- 9 passing cases
+- 11 failing cases
+- +25.00 points versus the frozen 20.00% baseline
+
+This run measures proposal-to-policy enforcement behavior on synthetic data, not live integrations.
+
 ## Target outcome
 
 The proposed target for a strong final result is:
@@ -80,3 +93,6 @@ Approximate time and cost should be measured per case and across the full set us
 - Report failures explicitly.
 - Keep the baseline result separate from future improvements.
 - Do not hide ambiguous cases.
+- Partial model-driven runs must stay in limit-specific files such as `evaluation/results/agent-luna-limit-1.json` and `evaluation/results/agent-luna-limit-5.json`.
+- Partial model-driven runs must keep `partial_run: true` and `not_authoritative: true` so they are not mistaken for a completed 20-case Luna run.
+- A full 20-case Luna report may only use the plain `evaluation/results/agent-luna.json` and `evaluation/results/agent-luna.md` names once that full run actually exists.

@@ -1,7 +1,7 @@
 # Baseline Evaluation Report
 
 - Evaluation version: 2.0.0
-- Timestamp: 2026-08-29T08:03:12.610Z
+- Timestamp: 2026-08-29T18:34:26.403Z
 - Baseline: Deterministic basic sales-inquiry automation
 - Description: Rule-based baseline that classifies customer messages, drafts a generic reply, and respects the runnable-case privacy boundary.
 - Exact command: `npm run evaluate:baseline`
@@ -10,7 +10,7 @@
 
 ## Secondary Metrics
 
-- Intent accuracy: 55.00%
+- Intent accuracy: 60.00%
 - Escalation accuracy: 60.00%
 - Factual integrity: 100.00%
 - Policy safety: 100.00%
@@ -19,7 +19,7 @@
 
 - Passing cases: 4
 - Failing cases: 16
-- Runtime: 47 ms
+- Runtime: 52 ms
 - Model/API cost: $0.00
 
 ## Environment
@@ -38,7 +38,7 @@
 | LB-001 | FAIL | product_association_or_clarification |
 | LB-002 | FAIL | product_association_or_clarification |
 | LB-003 | FAIL | intent_labels, product_association_or_clarification, correct_action_escalation |
-| LB-004 | FAIL | intent_labels, product_association_or_clarification |
+| LB-004 | FAIL | product_association_or_clarification |
 | LB-005 | FAIL | product_association_or_clarification |
 | LB-006 | FAIL | intent_labels, product_association_or_clarification, correct_action_escalation |
 | LB-007 | FAIL | intent_labels, product_association_or_clarification, correct_action_escalation |

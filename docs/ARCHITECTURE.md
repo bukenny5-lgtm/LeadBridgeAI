@@ -14,6 +14,14 @@ Phase 3 now implements a deterministic, read-only tool layer over synthetic fixt
 
 The tool layer is intentionally separate from model-driven orchestration. It gives later agent work a reusable lower boundary that can be validated without live APIs, customer data, or hidden runtime dependencies.
 
+## Hybrid policy boundary
+
+Phase 4 adds a deterministic policy boundary around the model-driven agent. The model now proposes language, intents, tool usage, and candidate actions, while policy code decides lead qualification, approval routing, escalation, claim permission, order-field capture, and the final customer-facing rendering.
+
+The policy boundary is implemented in `src/agent/policy.ts`. It produces the final output from a model proposal, the executed tool evidence, and claim validation results, and it records overrides when the proposal and policy differ.
+
+This keeps the live or mock model from directly controlling customer-facing factual claims or business decisions, while still preserving the proposal for traceability.
+
 ## Phase 1 status
 
 None of those layers are implemented yet. This document exists to record the intended separation early so later work can stay disciplined.

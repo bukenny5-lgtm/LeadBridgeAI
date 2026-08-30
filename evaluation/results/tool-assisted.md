@@ -1,7 +1,7 @@
 # Tool-Assisted Evaluation Report
 
 - Evaluation version: 3.0.0
-- Timestamp: 2026-08-29T10:45:26.372Z
+- Timestamp: 2026-08-29T18:35:09.410Z
 - Baseline reference: evaluation\results\baseline.json (20.00%)
 - Comparison: +40.00 points
 - Relative change: 200.00%
@@ -22,7 +22,7 @@
 
 - Passing cases: 12
 - Failing cases: 8
-- Runtime: 19 ms
+- Runtime: 39 ms
 - Model/API cost: $0.00
 
 ## Per-Case Results
@@ -59,7 +59,7 @@
   - Outcome: found
   - Args: {"channel":"facebook","postId":"fb-post-001"}
   - Evidence: post:facebook:fb-post-001, product:UG-PRD-101
-  - Duration: 0 ms
+  - Duration: 1 ms
 - Tool: getProduct
   - Outcome: found
   - Args: {"productId":"UG-PRD-101"}
@@ -121,7 +121,7 @@
   - Outcome: found
   - Args: {"query":"where exactly are you based for pickup in kampala"}
   - Evidence: product:UG-PRD-105, product:UG-PRD-101, product:UG-PRD-102
-  - Duration: 1 ms
+  - Duration: 2 ms
 - Tool: getBusinessLocation
   - Outcome: found
   - Args: {}
@@ -173,7 +173,7 @@
   - Outcome: found
   - Args: {"query":"i will only pay 70 000 for the toner pack"}
   - Evidence: product:UG-PRD-105, product:UG-PRD-103, product:UG-PRD-104
-  - Duration: 0 ms
+  - Duration: 1 ms
 
 ### LB-008
 - Route: inventory_unavailable
@@ -206,7 +206,7 @@
   - Outcome: found
   - Args: {"query":"do you still have the same one from the last post"}
   - Evidence: product:UG-PRD-105, product:UG-PRD-103, product:UG-PRD-106
-  - Duration: 0 ms
+  - Duration: 1 ms
 
 ### LB-010
 - Route: variant
@@ -234,7 +234,7 @@
   - Outcome: found
   - Args: {"query":"please send the invoice for 3 toner packs i will pay today"}
   - Evidence: product:UG-PRD-105, product:UG-PRD-103, product:UG-PRD-106
-  - Duration: 0 ms
+  - Duration: 1 ms
 
 ### LB-012
 - Route: compliment
@@ -317,7 +317,7 @@
   - Outcome: found
   - Args: {"query":"another seller quoted me 8 000 for the same led lamp so you must match it"}
   - Evidence: product:UG-PRD-106, product:UG-PRD-102, product:UG-PRD-108
-  - Duration: 0 ms
+  - Duration: 1 ms
 
 ### LB-019
 - Route: negotiation

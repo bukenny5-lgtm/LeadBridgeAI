@@ -52,6 +52,18 @@ Status: Accepted
 
 Phase 3 introduces a deterministic, read-only tool layer over synthetic fixtures for product, inventory, delivery, and negotiation checks. The layer is designed as a reusable lower boundary for later model-driven agent orchestration and keeps tool arguments, evidence, and trace output sanitized.
 
+### D-009: Enforce a deterministic policy boundary around model proposals
+
+Status: Accepted
+
+Phase 4 adds a deterministic policy layer that receives a model proposal, executed tool evidence, and claim validation results before producing the final prediction. Lead creation, approval routing, escalation, order-field capture, and customer-facing factual wording are policy decisions rather than model authority.
+
+### D-010: Use the verified-tools prediction as the hybrid backbone
+
+Status: Accepted
+
+When the hybrid policy path has a verified-tools prediction available, that prediction is the default authority for protected operational fields, including lead creation, escalation, provisional-order handling, product association, action, and order fields. A model proposal may only change those fields through deterministic, evidence-backed overrides, and rejected or unsupported proposals must not degrade the verified-tools decision.
+
 ## Pending decisions
 
 - Final product and inventory data source design.
