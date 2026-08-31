@@ -22,6 +22,17 @@ The policy boundary is implemented in `src/agent/policy.ts`. It produces the fin
 
 This keeps the live or mock model from directly controlling customer-facing factual claims or business decisions, while still preserving the proposal for traceability.
 
+## Phase 5 demo hub
+
+Phase 5 adds a local synthetic demonstration web hub on top of the verified-tools core. The web tier is intentionally minimal:
+
+1. A Node HTTP server exposes a safe API for the demo inbox, processing actions, approval toggles, metrics, and evaluation summaries.
+2. A browser client renders the dashboard, filters, detail panel, evidence panel, trace panel, and evaluation comparison.
+3. The server reuses `runToolAssistedWorkflow` for message processing and only adds sanitized presentation data on top of the existing workflow output.
+4. In-memory state is used only for the demo approval queue, so restart resets approval status without affecting the stored evaluation artifacts.
+
+The demo is synthetic only. It does not connect to real channels, does not send real messages, and does not expose expected answers, rationales, prohibited actions, or hidden minimum prices to the browser.
+
 ## Phase 1 status
 
 None of those layers are implemented yet. This document exists to record the intended separation early so later work can stay disciplined.
@@ -34,6 +45,7 @@ None of those layers are implemented yet. This document exists to record the int
 - Make traces and decisions inspectable.
 - Keep tool arguments sanitized and evidence-backed.
 - Prefer self-contained validation when external schema packages are unavailable.
+- Keep the demo hub minimal until a full production web layer is justified.
 
 ## Open questions
 

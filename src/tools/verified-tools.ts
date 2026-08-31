@@ -41,6 +41,7 @@ export interface ProductMatch {
   sku: string;
   name: string;
   category: string;
+  listed_price_ugx: number;
   safe_description: string;
   active: boolean;
   evidence_ref: string;
@@ -257,6 +258,7 @@ function productMatch(product: ProductFixture): ProductMatch {
     sku: product.sku,
     name: product.name,
     category: product.category,
+    listed_price_ugx: product.listed_price_ugx,
     safe_description: product.safe_description,
     active: product.active,
     evidence_ref: productEvidence(product.product_id),

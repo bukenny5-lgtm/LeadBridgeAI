@@ -2,7 +2,7 @@
 
 ## Phase
 
-Phase 4 hybrid deterministic-policy recovery, repaired and locally verified with a recovered five-case audit, v2 mock run, and a hybrid mock run that now restores the verified-tools backbone to the 60.00% floor.
+Phase 5 synthetic demo hub implementation, layered on top of the verified-tools core and the deterministic policy boundary.
 
 ## What exists now
 
@@ -33,12 +33,18 @@ Phase 4 hybrid deterministic-policy recovery, repaired and locally verified with
 - Hybrid mock traces now written under `traces/runtime-agent/model-driven/mock/hybrid-v1/`
 - Five-case Luna v2 live report now written to `evaluation/results/agent-luna-v2-limit-5.json`
 - Five-case Luna v2 live traces now written under `traces/runtime-agent/model-driven/live/luna-v2/`
+- Synthetic demo web hub server and browser client scaffold
+- Safe API for synthetic inbox, message processing, approvals, metrics, and evaluation summaries
+- In-memory approval state for the demo hub
+- Presentation-layer deduplication for repeated evidence entries in the demo proof trail
+- Explicit allowlisted serving for the browser demo modules at `/assets/client.js` and `/assets/render.js`
+- Phase 5 correction pass for a single message lifecycle, actionable status metrics, live search, ignore/restore, and revision workflows
 
 ## What does not exist yet
 
-- Application source code
-- Runtime agent
 - Live integrations
+- Production deployment
+- Persistent demo state
 - Production traces
 
 ## Status summary
@@ -52,6 +58,8 @@ Phase 4 also added a deterministic policy boundary around the model-driven agent
 The strict agent-v2 contract is now isolated at the agent boundary, with the frozen baseline and verified-tool workflows left unchanged in score.
 
 The local verification sequence passed `npm.cmd run typecheck`, `npm.cmd test`, `npm.cmd run evaluate:baseline`, `npm.cmd run evaluate:tools`, `npm.cmd run evaluate:agent:mock`, `npm.cmd run evaluate:agent:hybrid:mock`, and `npm.cmd run check`.
+
+Phase 5 is now building a synthetic demo hub on top of the verified-tools workflow. The demo remains local-only, in-memory for approvals, and fully synthetic.
 
 The v2 mock report is `evaluation/results/agent-mock.json`, uses `prompt_version: sales-agent-v2`, and writes traces under `traces/runtime-agent/model-driven/mock/mock-v2/`. It now scores 40.00% after policy enforcement.
 
@@ -70,3 +78,15 @@ The verified-tool report remains 60.00% on the 20-case synthetic set, with repor
 The historical v1 live artifacts remain preserved under `traces/runtime-agent/model-driven/live/luna/` and the partial live reports `evaluation/results/agent-luna-limit-1.*` and `evaluation/results/agent-luna-limit-5.*`, while the new v2 live artifacts live under `traces/runtime-agent/model-driven/live/luna-v2/` and `evaluation/results/agent-luna-v2-limit-5.*`.
 
 The hybrid recovery now matches the verified-tool floor, so Phase 4 should stop here and the submitted core should be verified-tools rather than hybrid. The next product milestone is the demonstration web hub, not further agent tuning.
+
+The Phase 5 demo hub will keep the verified-tools workflow as the operational core and add only a safe, synthetic presentation layer on top.
+
+The recovered Phase 5 demo hub now has a verified local smoke path: `npm.cmd run typecheck`, `npm.cmd test`, `npm.cmd run build:web`, and live checks against `http://127.0.0.1:4173/`, `http://127.0.0.1:4173/api/health`, `http://127.0.0.1:4173/api/demo/messages`, and `http://127.0.0.1:4173/api/demo/messages/demo-002/process`.
+
+The confirmed browser-module defect was a blank dark shell with `client.js` loading successfully while `render.js` returned 404. That root cause is now repaired by serving the compiled browser-safe modules through an explicit allowlist, and the live smoke check now returns 200 for both module URLs with traversal staying 404.
+
+The current Phase 5 correction pass replaces the old processed/approved/rejected dashboard state split with a single lifecycle model: `new`, `awaiting_approval`, `needs_revision`, `specialized_review`, `resolved`, and `ignored`. The dashboard now defaults to `Open` plus `All channels`, the metric cards drive the same status selector as the filter chips, and the ignore flow requires confirmation plus a reason before it moves a message to the ignored queue. Re-analysis, request revision, specialized resolution, and restore-to-inbox behaviors are wired through the synthetic API and browser client.
+
+The interrupted Phase 5 visual-density recovery has now been revalidated locally after the narrow test alignment fix. `npm.cmd run typecheck`, `npm.cmd test`, `npm.cmd run check`, and `npm.cmd run build:web` all pass in the current workspace. The live demo server still serves the synthetic inbox and allowlisted browser assets on port 4173.
+
+The confirmed browser-module defect was recovered by allowlisting `/assets/alerts.js` alongside the existing browser-safe modules. The browser import graph now resolves `client.js -> alerts.js` and `client.js -> render.js` with 200 responses, while `/assets/server.js`, `/assets/store.js`, `/assets/data.js`, and traversal requests still return 404.

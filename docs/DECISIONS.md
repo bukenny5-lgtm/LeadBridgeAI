@@ -64,6 +64,12 @@ Status: Accepted
 
 When the hybrid policy path has a verified-tools prediction available, that prediction is the default authority for protected operational fields, including lead creation, escalation, provisional-order handling, product association, action, and order fields. A model proposal may only change those fields through deterministic, evidence-backed overrides, and rejected or unsupported proposals must not degrade the verified-tools decision.
 
+### D-011: Build the demo hub as a minimal synthetic Node web tier
+
+Status: Accepted
+
+Phase 5 adds a small Node HTTP server and a vanilla TypeScript browser client rather than a heavier framework. The demo hub must stay synthetic, reuse the verified-tools workflow, avoid real platform connections, and keep approval state in memory only. Hidden pricing floors, expected answers, rationales, and prohibited-action authoring fields remain out of the browser contract.
+
 ## Pending decisions
 
 - Final product and inventory data source design.

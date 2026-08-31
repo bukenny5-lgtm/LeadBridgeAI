@@ -133,3 +133,53 @@ Future iterations should add:
 - lessons learned
 
 Do not fabricate experiments, scores, or conclusions.
+
+## Phase 5
+
+### Synthetic Demo Hub Added
+
+- Added a local Node HTTP server for a synthetic demo inbox and safe API boundary.
+- Added a vanilla TypeScript browser client for the dashboard, filters, detail panel, evidence panel, trace panel, and evaluation comparison.
+- Reused `runToolAssistedWorkflow` as the processing engine for demo message actions.
+- Kept approval state in memory only so restarting the server resets the demo queue without affecting stored evaluation reports.
+- Added tests that exercise the sanitized inbox payload, message processing, demo-only approval state, invalid message handling, evaluation summaries, and dashboard rendering helpers.
+- Updated the docs to describe the demo hub, the synthetic-data boundary, and the new local run commands.
+- The new phase remains synthetic-only and does not connect to live platform accounts.
+
+### Phase 5 recovery validation
+
+- Restored the interrupted demo-hub verification by deduplicating repeated evidence entries in the presentation layer while leaving the verified workflow logic unchanged.
+- Added a regression test that proves repeated evidence items render only once in the dashboard proof trail.
+- Re-ran the local verification sequence successfully with `npm.cmd run typecheck`, `npm.cmd test`, `npm.cmd run build:web`, and runtime endpoint checks against the built server.
+
+### Phase 5 browser-module serving repair
+
+- Confirmed the browser shell bug: the HTML loaded and `client.js` returned 200, but `render.js` returned 404 so the dashboard stayed as a blank dark shell.
+- Repaired static module delivery by serving only the browser-safe compiled demo modules through an explicit allowlist at `/assets/client.js` and `/assets/render.js`.
+- Kept traversal and non-allowlisted requests blocked with 404 responses.
+- Added regression coverage for the live module URLs, JavaScript content types, root HTML script reference, and traversal rejection.
+- Verified the fix with `npm.cmd run typecheck`, `npm.cmd test`, `npm.cmd run check`, `npm.cmd run build:web`, and live endpoint checks on port 4173.
+
+### Phase 5 lifecycle and filter correction pass
+
+- Replaced the dashboard's old processed/approved/rejected split with a single explicit lifecycle: `new`, `awaiting_approval`, `needs_revision`, `specialized_review`, `resolved`, and `ignored`.
+- Aligned the message list, status chips, metric cards, and filter chips to the same status selector so counts and visible rows now agree.
+- Added actionable metric cards for the main lifecycle views, with `Open` as the default status and `All channels` as the default channel.
+- Added the ignore confirmation flow with a required reason, plus restore-to-inbox handling that returns the message to its prior open state.
+- Added request-revision, specialized-resolution, and re-analysis actions to the synthetic API and browser client while keeping the verified-tools workflow unchanged.
+- Verified the correction pass with `npm.cmd run typecheck`, `npm.cmd test`, and `npm.cmd run build:web`.
+
+### Phase 5 recovery continuation
+
+- Recovered the interrupted visual-density pass without widening scope beyond the synthetic demo hub.
+- Fixed the test helper typing so the dashboard view-model matches the renderer contract under TypeScript strictness.
+- Aligned the demo-hub regression assertions with the current compact header, tabbed detail view, and runtime loading copy.
+- Revalidated the workspace after recovery with `npm.cmd run typecheck`, `npm.cmd test`, `npm.cmd run check`, and `npm.cmd run build:web`.
+
+### Phase 5 browser-module recovery
+
+- Introduced the synthetic alert module for browser-side toast and notification support.
+- Confirmed the browser allowlist had not been extended for `/assets/alerts.js`, causing the dashboard shell to stop at module initialization with a 404.
+- Added `/assets/alerts.js` to the explicit browser-safe asset map while keeping server-only modules blocked.
+- Added a regression test that walks the runtime browser import graph from `client.js`, verifies every imported module returns 200, and keeps `server.js`, `store.js`, `data.js`, and traversal requests at 404.
+- Revalidated the rebuilt local server and import graph with live requests on port 4173.
