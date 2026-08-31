@@ -183,3 +183,18 @@ Do not fabricate experiments, scores, or conclusions.
 - Added `/assets/alerts.js` to the explicit browser-safe asset map while keeping server-only modules blocked.
 - Added a regression test that walks the runtime browser import graph from `client.js`, verifies every imported module returns 200, and keeps `server.js`, `store.js`, `data.js`, and traversal requests at 404.
 - Revalidated the rebuilt local server and import graph with live requests on port 4173.
+
+### Phase 6 submission-preparation audit
+
+- Confirmed the repository root, `main` branch, clean worktree, and recent commit history before any packaging work.
+- Audited the repository inventory, traces, `.gitignore`, evaluation reports, and sensitive-term matches without changing frozen evaluation assets.
+- Verified the current local workspace with `npm.cmd run typecheck`, `npm.cmd test`, `npm.cmd run check`, and `npm.cmd run build:web`.
+- Reproduced the project in a clean temporary archive created from tracked files only and confirmed that `npm.cmd ci`, `npm.cmd run typecheck`, `npm.cmd run build:web`, `npm.cmd test`, `npm.cmd run check`, and the local demo smoke probes all passed once the build step created the browser assets.
+- Noted honestly that the ordered fresh-archive attempt with `test` before `build:web` fails because the demo asset test depends on built browser files.
+- Added submission-facing documentation for judging, demo narration, the checklist, and the explicit allowlist manifest.
+
+### Phase 6 reproducibility correction
+
+- Added a `pretest` script so `npm.cmd test` automatically runs `build:web` before Vitest.
+- Corrected the clean-environment sequence so `npm.cmd ci` followed by `npm.cmd test` now works without a manual build step.
+- Updated the reproduction, final-audit, and status docs to reflect the new standard sequence.

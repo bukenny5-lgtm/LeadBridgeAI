@@ -9,6 +9,7 @@
     "build:web": "npm run build",
     "dev": "npm run build:web && node dist/demo/server.js",
     "start": "node dist/demo/server.js",
+    "pretest": "npm run build:web",
     "test": "vitest run",
     "validate:data": "npm run build && node dist/validation/validate-data.js",
     "evaluate:baseline": "npm run build && node dist/evaluation/run-baseline.js",

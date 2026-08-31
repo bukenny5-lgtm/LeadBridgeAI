@@ -2,7 +2,7 @@
 
 ## Phase
 
-Phase 5 synthetic demo hub implementation, layered on top of the verified-tools core and the deterministic policy boundary.
+Phase 6 submission preparation, layered on top of the verified-tools core, the deterministic policy boundary, and the synthetic demo hub.
 
 ## What exists now
 
@@ -34,6 +34,7 @@ Phase 5 synthetic demo hub implementation, layered on top of the verified-tools 
 - Five-case Luna v2 live report now written to `evaluation/results/agent-luna-v2-limit-5.json`
 - Five-case Luna v2 live traces now written under `traces/runtime-agent/model-driven/live/luna-v2/`
 - Synthetic demo web hub server and browser client scaffold
+- Submission-facing docs, checklist, manifest, and judging guidance
 - Safe API for synthetic inbox, message processing, approvals, metrics, and evaluation summaries
 - In-memory approval state for the demo hub
 - Presentation-layer deduplication for repeated evidence entries in the demo proof trail
@@ -90,3 +91,7 @@ The current Phase 5 correction pass replaces the old processed/approved/rejected
 The interrupted Phase 5 visual-density recovery has now been revalidated locally after the narrow test alignment fix. `npm.cmd run typecheck`, `npm.cmd test`, `npm.cmd run check`, and `npm.cmd run build:web` all pass in the current workspace. The live demo server still serves the synthetic inbox and allowlisted browser assets on port 4173.
 
 The confirmed browser-module defect was recovered by allowlisting `/assets/alerts.js` alongside the existing browser-safe modules. The browser import graph now resolves `client.js -> alerts.js` and `client.js -> render.js` with 200 responses, while `/assets/server.js`, `/assets/store.js`, `/assets/data.js`, and traversal requests still return 404.
+
+Phase 6 completed the repository audit, trace audit, security scan, local verification, clean-room reproduction, submission-document creation, and allowlist-based ZIP preparation work. The temp clean-room archive passed `npm.cmd ci`, `npm.cmd run typecheck`, `npm.cmd run build:web`, `npm.cmd test`, `npm.cmd run check`, and the local smoke probes once the build step had created the browser assets.
+
+Phase 6.1 corrects the clean-room sequence by adding a `pretest` hook, so `npm.cmd ci` followed by `npm.cmd test` now builds the browser assets automatically before Vitest runs. The main workspace and a fresh tracked-file archive should both use that standard sequence going forward.
